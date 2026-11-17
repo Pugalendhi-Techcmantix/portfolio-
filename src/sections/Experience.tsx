@@ -8,7 +8,7 @@ export function Experience() {
     <section id="experience" aria-labelledby="experience-title" className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
       <div className="mx-auto max-w-4xl">
         <SectionTitle id="experience-title">Experience and education</SectionTitle>
-        <div className="relative">
+        <div className="relative" data-timeline>
           <div aria-hidden className="absolute bottom-3 left-[11px] top-3 w-0.5 rounded-full bg-white/10" />
           <div aria-hidden className="tl-line absolute bottom-3 left-[11px] top-3 w-0.5 rounded-full bg-gradient-to-b from-aqua via-iris to-rose shadow-[0_0_14px_rgb(129_140_248/0.8)]" />
           <ol className="space-y-8 pl-12">

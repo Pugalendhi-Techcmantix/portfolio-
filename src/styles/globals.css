@@ -12,7 +12,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 6rem;
   -webkit-tap-highlight-color: transparent;
 }
@@ -323,83 +322,106 @@ h3 {
 }
 
 /* =====================================================================
-   Scroll-driven animations. Run on the compositor with no JavaScript.
-   Unsupported browsers simply show the final state.
+   Scroll effects. Time-based transitions triggered by an IntersectionObserver
+   (works in every browser), plus a few values driven by one scroll handler.
    ===================================================================== */
 .progress {
-  display: none;
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 60;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 0));
+  background: linear-gradient(90deg, var(--color-aqua), var(--color-iris), var(--color-rose));
 }
-@supports (animation-timeline: scroll()) {
-  .progress {
-    display: block;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 3px;
-    z-index: 60;
-    transform-origin: 0 50%;
-    background: linear-gradient(90deg, var(--color-aqua), var(--color-iris), var(--color-rose));
-    animation: grow linear both;
-    animation-timeline: scroll(root);
-  }
-  @keyframes grow {
-    from {
-      transform: scaleX(0);
-    }
-  }
-  .aurora-wrap {
-    animation: slide linear both;
-    animation-timeline: scroll(root);
-  }
-  @keyframes slide {
-    to {
-      transform: translate3d(0, var(--shift, -40vh), 0);
-    }
+.aurora-wrap {
+  transform: translate3d(0, calc(var(--sy, 0) * var(--k, -0.1) * 1px), 0);
+}
+.hero-par {
+  transform: translate3d(0, calc(var(--hy, 0) * -1px), 0);
+}
+
+/* Sections and cards rise, scale and fade in as they enter the screen */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(64px) scale(0.94);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 1.1s var(--ease-out-expo);
+  transition-delay: calc(var(--i, 0) * 120ms);
+}
+.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Chips pop in one after another once their card has appeared */
+.reveal.in .chip {
+  animation: chip-in 0.6s var(--ease-out-expo) backwards;
+  animation-delay: calc(var(--n, 0) * 55ms + 350ms);
+}
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.85);
   }
 }
-@supports (animation-timeline: view()) {
-  .reveal {
-    animation: reveal linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry calc(42% + var(--i, 0) * 6%);
-  }
-  .reveal-x {
-    animation: reveal-x linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 45%;
-  }
-  @keyframes reveal {
-    from {
-      opacity: 0;
-      transform: translateY(56px) scale(0.95);
-    }
-  }
-  @keyframes reveal-x {
-    from {
-      opacity: 0;
-      transform: translateX(var(--from, -48px));
-    }
-  }
-  .count {
-    animation: count linear both;
-    animation-timeline: view();
-    animation-range: entry 5% entry 85%;
-  }
-  @keyframes count {
-    from {
-      --num: 0;
-    }
-  }
-  .tl-line {
-    transform-origin: 50% 0;
-    animation: line linear both;
-    animation-timeline: view();
-    animation-range: entry 25% cover 55%;
-  }
-  @keyframes line {
-    from {
-      transform: scaleY(0);
-    }
-  }
+.chip:nth-child(1) {
+  --n: 0;
+}
+.chip:nth-child(2) {
+  --n: 1;
+}
+.chip:nth-child(3) {
+  --n: 2;
+}
+.chip:nth-child(4) {
+  --n: 3;
+}
+.chip:nth-child(5) {
+  --n: 4;
+}
+.chip:nth-child(6) {
+  --n: 5;
+}
+.chip:nth-child(7) {
+  --n: 6;
+}
+.chip:nth-child(8) {
+  --n: 7;
+}
+.chip:nth-child(9) {
+  --n: 8;
+}
+.chip:nth-child(10) {
+  --n: 9;
+}
+.chip:nth-child(11) {
+  --n: 10;
+}
+.chip:nth-child(12) {
+  --n: 11;
+}
+.chip:nth-child(13) {
+  --n: 12;
+}
+.chip:nth-child(14) {
+  --n: 13;
+}
+
+/* Numbers count up when their card appears */
+.js .count {
+  --num: 0;
+  transition: --num 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s;
+}
+.js .reveal.in .count {
+  --num: var(--to);
+}
+
+/* The timeline line draws as you scroll (progress is set by the scroll handler) */
+.js .tl-line {
+  transform-origin: 50% 0;
+  transform: scaleY(var(--p, 0));
 }
 
 /* Skip layout and paint for sections that are far off-screen. Sizes are close to the real heights
@@ -431,9 +453,28 @@ main > section:not(#top) {
   #contact { --ci: 780px; }
 }
 
+/* Lenis (smooth wheel scrolling) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .js .tl-line {
+    transform: none;
+  }
+  .progress {
+    display: none;
   }
   *,
   *::before,

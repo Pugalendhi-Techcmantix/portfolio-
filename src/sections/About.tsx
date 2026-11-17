@@ -50,7 +50,7 @@ export function About() {
                       {s.suffix}
                     </span>
                     <span aria-hidden>
-                      <span className="count" style={{ ['--num' as string]: s.value }} />
+                      <span className="count" style={{ ['--to' as string]: s.value }} />
                       {s.suffix}
                     </span>
                   </dd>

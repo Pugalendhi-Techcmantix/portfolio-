@@ -1,5 +1,6 @@
 import { Backdrop } from './components/Backdrop'
 import { Nav } from './components/Nav'
+import { useSiteMotion } from './lib/useSiteMotion'
 import { About } from './sections/About'
 import { Contact } from './sections/Contact'
 import { Education } from './sections/Education'
@@ -9,6 +10,8 @@ import { Projects } from './sections/Projects'
 import { Skills } from './sections/Skills'
 
 export default function App() {
+  useSiteMotion()
+
   return (
     <>
       <a

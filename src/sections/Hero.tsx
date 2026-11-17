@@ -79,7 +79,7 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
+        <div className="hero-par flex justify-center lg:justify-end">
           <HeroVisual />
         </div>
       </div>
