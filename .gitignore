@@ -24,3 +24,18 @@ dist-ssr
 *.sw?
 .playwright-mcp
 portfolio-site.zip
+
+# Secrets and local settings (never commit these)
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Deploy tooling and build leftovers
+.vercel
+*.tsbuildinfo
+coverage
+
+# OS files
+Thumbs.db
+Desktop.ini
