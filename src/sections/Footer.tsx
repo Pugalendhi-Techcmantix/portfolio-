@@ -4,7 +4,7 @@ const YEAR = new Date().getFullYear()
 
 export function Footer() {
   return (
-    <footer className="relative z-10 flex flex-col items-center justify-between gap-3 border-t-2 border-ink px-5 py-8 text-base sm:flex-row sm:px-8 md:px-14">
+    <footer className="relative z-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 px-5 py-8 text-base sm:flex-row sm:px-8 md:px-14">
       <p>
         © {YEAR} {profile.firstName} {profile.lastName}. Built with React, three.js and a lot of springs.
       </p>

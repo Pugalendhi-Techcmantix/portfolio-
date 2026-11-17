@@ -68,9 +68,21 @@ export function Toy({ index, kind, color }: Props) {
     const t = state.clock.elapsedTime
 
     target.set(fx * viewport.width, fy * viewport.height + Math.sin(t * 0.9 + seed) * 0.12, z)
-    if (section === 'hero') {
-      target.x += pointer.x * 0.35 * (1 + z * 0.2)
-      target.y += pointer.y * 0.25 * (1 + z * 0.2)
+    if (pointer.active) {
+      // Toys drift toward the cursor a little, but get shoved away when it gets close.
+      const px = (pointer.x * viewport.width) / 2
+      const py = (pointer.y * viewport.height) / 2
+      target.x += pointer.x * 0.3 * (1 + z * 0.2)
+      target.y += pointer.y * 0.2 * (1 + z * 0.2)
+      const dx = target.x - px
+      const dy = target.y - py
+      const dist = Math.hypot(dx, dy) || 0.0001
+      const radius = 2.2 * fit
+      if (dist < radius) {
+        const push = (1 - dist / radius) ** 2 * 2.2
+        target.x += (dx / dist) * push
+        target.y += (dy / dist) * push
+      }
     }
     g.position.lerp(target, 1 - Math.exp(-d * 3.2))
 
@@ -120,5 +132,19 @@ export function Toy({ index, kind, color }: Props) {
 }
 
 function ToyMaterial({ color }: { color: string }) {
-  return <meshPhysicalMaterial color={color} roughness={0.28} clearcoat={1} clearcoatRoughness={0.12} />
+  return (
+    <meshPhysicalMaterial
+      color={color}
+      emissive={color}
+      emissiveIntensity={0.32}
+      roughness={0.16}
+      metalness={0.1}
+      clearcoat={1}
+      clearcoatRoughness={0.06}
+      iridescence={1}
+      iridescenceIOR={1.35}
+      iridescenceThicknessMinimum={120}
+      iridescenceThicknessMaximum={520}
+    />
+  )
 }

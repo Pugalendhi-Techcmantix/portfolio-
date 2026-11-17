@@ -40,12 +40,13 @@ export function Contact() {
       aria-labelledby="contact-title"
       className="relative flex min-h-svh flex-col items-center justify-center px-5 py-28 text-center sm:px-8"
     >
-      <h2 id="contact-title" className="font-display text-[clamp(2.6rem,9vw,7.5rem)] font-black leading-[0.9] tracking-[-0.045em]">
+      <div className="glass flex w-full max-w-4xl flex-col items-center rounded-[40px] px-5 py-12 sm:px-10 md:py-16">
+      <h2 id="contact-title" className="font-display text-[clamp(2.2rem,7vw,5.5rem)] font-black leading-[0.95] tracking-[-0.04em] text-white [filter:drop-shadow(0_0_30px_rgb(139_92_246/0.6))]">
         Let’s build
         <br />
         something together.
       </h2>
-      <p className="mt-6 max-w-[40ch] text-xl">
+      <p className="mt-6 max-w-[40ch] text-xl text-white/85">
         Have a project, a role or an idea? Send me an email or call, and I’ll get back to you.
       </p>
 
@@ -87,6 +88,7 @@ export function Contact() {
           </li>
         ))}
       </ul>
+      </div>
     </section>
   )
 }

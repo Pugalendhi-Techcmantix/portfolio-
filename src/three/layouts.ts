@@ -85,4 +85,22 @@ const tall: Layout = {
   contact: corners,
 }
 
-export const layouts = { wide, tall }
+/** The big planet: one slot per section. Far-away z values make it feel massive. */
+const planetWide: Record<SectionId, Slot> = {
+  hero: [0.3, 0.0, -3, 2.1],
+  about: [0.33, -0.04, -3, 1.6],
+  projects: [0.42, 0.34, -6, 0.9],
+  skills: [0, 0.02, -10, 3.4],
+  experience: [0.36, 0.06, -5, 1.5],
+  contact: [0, 0, -11, 3.6],
+}
+const planetTall: Record<SectionId, Slot> = {
+  hero: [0.1, 0.34, -4, 1.25],
+  about: [0.2, 0.42, -5, 1.1],
+  projects: [0.2, 0.42, -6, 0.9],
+  skills: [0.2, 0.42, -6, 0.9],
+  experience: [0.2, 0.42, -6, 0.9],
+  contact: [0, 0.35, -8, 1.4],
+}
+
+export const layouts = { wide, tall, planetWide, planetTall }

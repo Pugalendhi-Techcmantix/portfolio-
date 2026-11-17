@@ -1,4 +1,5 @@
 import { lazy, Suspense, useState } from 'react'
+import { Backdrop } from './components/Backdrop'
 import { Cursor } from './components/Cursor'
 import { Marquee } from './components/Marquee'
 import { Nav } from './components/Nav'
@@ -27,11 +28,18 @@ function hasWebGL() {
 function ToyLayer() {
   const reduced = useReducedMotion()
   const [webgl] = useState(hasWebGL)
-  if (reduced || !webgl) return <StaticToys />
+  if (!webgl) return <StaticToys />
   return (
-    <Suspense fallback={null}>
-      <ToyScene />
-    </Suspense>
+    <>
+      <Backdrop />
+      {reduced ? (
+        <StaticToys />
+      ) : (
+        <Suspense fallback={null}>
+          <ToyScene />
+        </Suspense>
+      )}
+    </>
   )
 }
 

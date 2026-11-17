@@ -3,10 +3,10 @@ import { useEffect, useSyncExternalStore } from 'react'
 export const SECTION_IDS = ['hero', 'about', 'projects', 'skills', 'experience', 'contact'] as const
 export type SectionId = (typeof SECTION_IDS)[number]
 
-type State = { section: SectionId; pointer: { x: number; y: number } }
+type State = { section: SectionId; pointer: { x: number; y: number; active: boolean } }
 
 /** Mutable store read every frame by the 3D scene (no React re-renders). */
-const state: State = { section: 'hero', pointer: { x: 0, y: 0 } }
+const state: State = { section: 'hero', pointer: { x: 0, y: 0, active: false } }
 const listeners = new Set<() => void>()
 
 export const scrollStore = {
@@ -20,6 +20,7 @@ export const scrollStore = {
   setPointer(x: number, y: number) {
     state.pointer.x = x
     state.pointer.y = y
+    state.pointer.active = true
   },
   subscribe(fn: () => void) {
     listeners.add(fn)

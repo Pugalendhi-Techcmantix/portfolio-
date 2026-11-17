@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "skills": {
+    "apple-design": {
+      "source": "emilkowalski/skills",
+      "commit": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "sourceType": "github",
+      "skillPath": "skills/apple-design/SKILL.md",
+      "computedHash": "163ba8b42c7d9d5ccb08674266d4727c9ec610b9d876c906b1f29ce5e0d933da"
+    },
+    "glassmorphism": {
+      "source": "iart-ai/web-animation-skills",
+      "commit": "ed3a045192679b24d32090ee7a983871311ababd",
+      "sourceType": "github",
+      "skillPath": "skills/glassmorphism/SKILL.md",
+      "computedHash": "52c31c76c1ce3c52485ed43c3dc36796c833972a0f916215392c2b611209a2dc"
+    },
+    "threejs-materials": {
+      "source": "CloudAI-X/threejs-skills",
+      "commit": "0e181866f095b5f06d005133876e926515390d95",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-materials/SKILL.md",
+      "computedHash": "138b23dd0b365bc6ee2f20eebcf1fcfb426b6acaeeda18c57c88039f8628d9aa"
+    },
+    "threejs-react-three-fiber": {
+      "source": "CloudAI-X/threejs-skills",
+      "commit": "0e181866f095b5f06d005133876e926515390d95",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-react-three-fiber/SKILL.md",
+      "computedHash": "68a27f2c540653a732e8339b35a51d135fc26acbd9a4258e02cc301e2290f594"
+    },
+    "threejs-shaders": {
+      "source": "CloudAI-X/threejs-skills",
+      "commit": "0e181866f095b5f06d005133876e926515390d95",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-shaders/SKILL.md",
+      "computedHash": "4ba49c86b4233fb1fb4321509fd7baefaf05fa139c6ce6090a8ef5096616f38d"
+    }
+  }
+}

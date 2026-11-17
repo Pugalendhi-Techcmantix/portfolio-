@@ -7,6 +7,7 @@ Vite 8 + React 19 + TypeScript · Tailwind CSS v4 (`@tailwindcss/vite`, tokens i
 
 ## Design
 Spec: `docs/superpowers/specs/2026-11-16-portfolio-design.md`. Use only the palette tokens (lilac, plum, bubblegum, lemon, pool, grass). Sentence case, no all-caps eyebrows, no "→" in buttons.
+Look: dark "arcade" theme (dark only): React Bits Galaxy background (src/components/reactbits), R3F planet + neon toys, glass panels (.glass / .glass-lite in globals.css). Third-party skills installed in .claude/skills: apple-design, glassmorphism, threejs-*.
 
 ## Rules
 - All content lives in `src/data/*.ts` — never hardcode copy in components.
