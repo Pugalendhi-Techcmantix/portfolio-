@@ -1,5 +1,8 @@
 import { Check, Copy } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { GitHubIcon, LinkedInIcon } from '../components/Icons'
+import { Glass } from '../components/Glass'
+import { Magnetic } from '../components/Magnetic'
 import { profile } from '../data/profile'
 
 type Status = 'idle' | 'copied' | 'failed'
@@ -29,50 +32,47 @@ export function Contact() {
   }[status]
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="mb-16 scroll-mt-16 lg:scroll-mt-24">
-      <h2 id="contact-title" className="sticky top-0 z-10 -mx-6 mb-6 bg-night/80 px-6 py-5 text-sm font-semibold text-slate-200 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
-        Contact
-      </h2>
-      <p className="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Let’s work together.</p>
-      <p className="mt-3 max-w-md">
-        I’m open to new projects and roles. The quickest way to reach me is by email or phone.
-      </p>
+    <section id="contact" aria-labelledby="contact-title" className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
+      <div className="reveal mx-auto max-w-5xl">
+        <Glass className="overflow-hidden p-8 text-center sm:p-14" style={{ ['--r' as string]: '40px' }}>
+          <div aria-hidden className="pointer-events-none absolute -top-32 left-1/2 size-[34rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgb(129_140_248/0.35),transparent_65%)]" />
+          <h2 id="contact-title" className="gradient-text relative text-[clamp(2.4rem,6.5vw,4.75rem)] font-extrabold leading-[1] tracking-[-0.04em]">
+            Let’s build something together.
+          </h2>
+          <p className="relative mx-auto mt-5 max-w-lg text-lg">
+            I’m open to new projects and roles. The quickest way to reach me is by email or phone.
+          </p>
 
-      <div className="mt-6 flex flex-wrap items-center gap-3">
-        <a
-          href={`mailto:${profile.email}`}
-          className="inline-flex min-h-11 items-center rounded-full bg-indigo-300 px-5 text-sm font-semibold text-slate-900 transition-colors hover:bg-indigo-200"
-        >
-          Email me
-        </a>
-        <button
-          type="button"
-          onClick={copy}
-          aria-label={`Copy email address ${profile.email}`}
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-700 px-5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-500 hover:bg-white/5"
-        >
-          {status === 'copied' ? <Check size={16} aria-hidden /> : <Copy size={16} aria-hidden />}
-          {profile.email}
-        </button>
+          <div className="relative mt-9 flex flex-wrap items-center justify-center gap-3">
+            <Magnetic href={`mailto:${profile.email}`}>Email me</Magnetic>
+            <Magnetic variant="glass" onClick={copy} aria-label={`Copy email address ${profile.email}`}>
+              {status === 'copied' ? <Check size={16} aria-hidden /> : <Copy size={16} aria-hidden />}
+              {profile.email}
+            </Magnetic>
+          </div>
+          <p role="status" aria-live="polite" className="relative mt-3 min-h-6 text-sm text-slate-200">
+            {message}
+          </p>
+
+          <ul aria-label="Other ways to reach me" className="relative mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            <li>
+              <a href={profile.phoneHref} className="inline-flex min-h-11 items-center font-semibold text-slate-100 hover:text-aqua">
+                {profile.phone}
+              </a>
+            </li>
+            <li>
+              <a href={profile.github} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 font-semibold text-slate-100 hover:text-aqua">
+                <GitHubIcon className="size-4" /> GitHub
+              </a>
+            </li>
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 font-semibold text-slate-100 hover:text-aqua">
+                <LinkedInIcon className="size-4" /> LinkedIn
+              </a>
+            </li>
+          </ul>
+        </Glass>
       </div>
-      <p role="status" aria-live="polite" className="mt-3 min-h-6 text-sm text-slate-300">
-        {message}
-      </p>
-
-      <dl className="mt-4 grid gap-1 text-sm">
-        <div className="flex gap-2">
-          <dt className="text-slate-500">Phone</dt>
-          <dd>
-            <a href={profile.phoneHref} className="text-slate-200 hover:text-indigo-200">
-              {profile.phone}
-            </a>
-          </dd>
-        </div>
-        <div className="flex gap-2">
-          <dt className="text-slate-500">Location</dt>
-          <dd className="text-slate-200">{profile.location}</dd>
-        </div>
-      </dl>
     </section>
   )
 }

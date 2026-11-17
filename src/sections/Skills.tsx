@@ -1,23 +1,33 @@
+import { Glass } from '../components/Glass'
+import { Marquee } from '../components/Marquee'
+import { SectionTitle } from '../components/SectionTitle'
 import { Tag } from '../components/Tag'
 import { skillGroups } from '../data/skills'
 
 export function Skills() {
   return (
-    <section id="skills" aria-labelledby="skills-title" className="mb-24 scroll-mt-16 md:mb-32 lg:scroll-mt-24">
-      <h2 id="skills-title" className="sticky top-0 z-10 -mx-6 mb-6 bg-night/80 px-6 py-5 text-sm font-semibold text-slate-200 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
-        Skills
-      </h2>
-      <div className="grid gap-6">
-        {skillGroups.map((g) => (
-          <div key={g.name}>
-            <h3 className="mb-2.5 text-sm font-medium text-slate-200">{g.name}</h3>
-            <ul className="flex flex-wrap gap-2">
-              {g.items.map((item) => (
-                <Tag key={item}>{item}</Tag>
-              ))}
-            </ul>
-          </div>
-        ))}
+    <section id="skills" aria-labelledby="skills-title" className="py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
+        <SectionTitle id="skills-title" intro="The tools I use day to day, grouped by what they do.">
+          Skills
+        </SectionTitle>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {skillGroups.map((g, i) => (
+            <div key={g.name} className="reveal" style={{ ['--i' as string]: i % 2 }}>
+              <Glass tilt className="h-full p-6">
+                <h3 className="text-lg font-bold text-white">{g.name}</h3>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {g.items.map((item) => (
+                    <Tag key={item}>{item}</Tag>
+                  ))}
+                </ul>
+              </Glass>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-16">
+        <Marquee />
       </div>
     </section>
   )

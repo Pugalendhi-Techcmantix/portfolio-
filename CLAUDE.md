@@ -4,10 +4,11 @@ Personal portfolio for Pugalendhi S (web developer, Trichy). Frontend-only: no A
 Production host: cPanel/Apache at pugal.techcmantix.in, deployed as static files (`npm run package` → upload `portfolio-site.zip`; `public/.htaccess` handles routing/caching). `server.js` (Express) is an alternative Node host. See `DEPLOY.md`.
 
 ## Stack
-Vite 8 + React 19 + TypeScript · Tailwind CSS v4 (`@tailwindcss/vite`, theme in `src/styles/globals.css`) · lucide-react icons · Inter variable font (Fontsource). No 3D, no animation libraries: the site must stay fast (about 75 KB gzip JS).
+Vite 8 + React 19 + TypeScript · Tailwind CSS v4 (`@tailwindcss/vite`, effects in `src/styles/globals.css`) · lucide-react icons · Inter variable font. About 79 KB gzip JS; keep it fast.
 
 ## Design
-Professional, content-first, dark. Two-column layout on desktop (fixed left column with name, nav and links; scrolling right column), single column on mobile. One accent colour (indigo), slate greys, subtle cursor glow. Sentence case, no all-caps labels, no gimmicks (no 3D scenes, custom cursors, pinned scroll or heavy blur).
+Modern dark glassmorphism over a slowly drifting aurora background. Rich but cheap motion: CSS scroll-driven animations (animation-timeline: view()/scroll()) for reveals, progress bar, counters and timeline; CSS keyframes for hero text and floating panels; tiny pointer handlers write CSS variables for tilt, spotlight, parallax and magnetic buttons. No WebGL, no animation libraries.
+Performance rules: animate only transform/opacity, keep backdrop-filter elements few (use .glass-lite for small chips), never animate blur, no nested blur, write pointer positions to CSS variables not React state. Fallbacks: prefers-reduced-motion, prefers-reduced-transparency, unsupported scroll-driven animations show the final state.
 
 ## Rules
 - All content lives in `src/data/*.ts`; never hardcode copy in components.

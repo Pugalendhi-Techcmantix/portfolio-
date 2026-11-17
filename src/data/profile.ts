@@ -3,6 +3,7 @@ export const profile = {
   role: 'Web developer',
   company: 'Techcmantix Technologies Pvt Ltd',
   location: 'Trichy, India',
+  words: ['web apps', 'AI chatbots', 'automations', 'full stack products'],
   tagline: 'I build React, Next.js and Node.js web apps, and AI features like RAG chatbots and n8n automations.',
   email: 'pugalp702@gmail.com',
   phone: '+91 78715 33595',

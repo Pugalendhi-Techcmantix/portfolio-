@@ -1,34 +1,38 @@
-import { experience } from '../data/experience'
+import { Glass } from '../components/Glass'
+import { SectionTitle } from '../components/SectionTitle'
 import { Tag } from '../components/Tag'
+import { experience } from '../data/experience'
 
 export function Experience() {
   return (
-    <section id="experience" aria-labelledby="experience-title" className="mb-24 scroll-mt-16 md:mb-32 lg:scroll-mt-24">
-      <h2 id="experience-title" className="sticky top-0 z-10 -mx-6 mb-4 bg-night/80 px-6 py-5 text-sm font-semibold text-slate-200 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
-        Experience
-      </h2>
-      <ol className="group/list">
-        {experience.map((job) => (
-          <li key={job.role} className="mb-10 last:mb-0">
-            <div className="group relative grid gap-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
-              <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-xl transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:ring-1 lg:group-hover:ring-white/5" />
-              <p className="z-10 mt-1 text-xs font-medium text-slate-500 sm:col-span-2">{job.period}</p>
-              <div className="z-10 sm:col-span-6">
-                <h3 className="font-medium leading-snug text-slate-200">{job.role}</h3>
-                <p className="text-slate-400">{job.place}</p>
-                <p className="mt-2 text-sm leading-normal">{job.summary}</p>
-                {job.tags.length > 0 && (
-                  <ul aria-label="Technologies used" className="mt-3 flex flex-wrap gap-2">
-                    {job.tags.map((t) => (
-                      <Tag key={t}>{t}</Tag>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ol>
+    <section id="experience" aria-labelledby="experience-title" className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
+      <div className="mx-auto max-w-4xl">
+        <SectionTitle id="experience-title">Experience and education</SectionTitle>
+        <div className="relative">
+          <div aria-hidden className="absolute bottom-3 left-[11px] top-3 w-0.5 rounded-full bg-white/10" />
+          <div aria-hidden className="tl-line absolute bottom-3 left-[11px] top-3 w-0.5 rounded-full bg-gradient-to-b from-aqua via-iris to-rose shadow-[0_0_14px_rgb(129_140_248/0.8)]" />
+          <ol className="space-y-8 pl-12">
+            {experience.map((job, i) => (
+              <li key={job.role} className="reveal relative" style={{ ['--i' as string]: i }}>
+                <span aria-hidden className="absolute -left-12 top-7 size-6 rounded-full border-2 border-white/70 bg-gradient-to-br from-iris to-rose shadow-[0_0_20px_rgb(129_140_248/0.8)]" />
+                <Glass tilt className="p-6 sm:p-7">
+                  <p className="text-sm font-semibold text-aqua">{job.period}</p>
+                  <h3 className="mt-1 text-xl font-bold tracking-tight text-white">{job.role}</h3>
+                  <p className="text-slate-300">{job.place}</p>
+                  <p className="mt-3">{job.summary}</p>
+                  {job.tags.length > 0 && (
+                    <ul aria-label="Technologies used" className="mt-4 flex flex-wrap gap-2">
+                      {job.tags.map((t) => (
+                        <Tag key={t}>{t}</Tag>
+                      ))}
+                    </ul>
+                  )}
+                </Glass>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
     </section>
   )
 }

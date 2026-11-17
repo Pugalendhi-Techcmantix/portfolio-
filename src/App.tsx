@@ -1,8 +1,9 @@
-import { CursorGlow } from './components/CursorGlow'
-import { Header } from './components/Header'
+import { Backdrop } from './components/Backdrop'
+import { Nav } from './components/Nav'
 import { About } from './sections/About'
 import { Contact } from './sections/Contact'
 import { Experience } from './sections/Experience'
+import { Hero } from './sections/Hero'
 import { Projects } from './sections/Projects'
 import { Skills } from './sections/Skills'
 
@@ -11,26 +12,23 @@ export default function App() {
     <>
       <a
         href="#main"
-        className="sr-only rounded-full bg-indigo-300 px-5 py-3 font-semibold text-slate-900 focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
+        className="sr-only rounded-full bg-iris px-5 py-3 font-semibold text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70]"
       >
         Skip to content
       </a>
-      <CursorGlow />
-      <div className="relative z-10 mx-auto min-h-screen max-w-screen-xl px-6 md:px-12 lg:px-24">
-        <div className="lg:flex lg:justify-between lg:gap-4">
-          <Header />
-          <main id="main" className="pt-24 lg:w-[50%] lg:py-24">
-            <About />
-            <Experience />
-            <Projects />
-            <Skills />
-            <Contact />
-            <footer className="max-w-md pb-16 text-sm text-slate-500">
-              Designed and built by Pugalendhi S with React and Tailwind CSS.
-            </footer>
-          </main>
-        </div>
-      </div>
+      <Backdrop />
+      <Nav />
+      <main id="main" className="relative z-10">
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
+      <footer className="relative z-10 px-6 pb-12 text-center text-sm text-slate-500">
+        Designed and built by Pugalendhi S with React and Tailwind CSS.
+      </footer>
     </>
   )
 }

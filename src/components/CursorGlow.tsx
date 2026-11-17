@@ -1,12 +1,9 @@
 import { useEffect } from 'react'
 
-/** Soft light behind the page that follows the cursor. Skipped on touch screens and for reduced motion. */
+/** Soft light that follows the mouse. Only two CSS variables change per frame. Skipped on touch and reduced motion. */
 export function CursorGlow() {
   useEffect(() => {
-    const fine = window.matchMedia('(pointer: fine)').matches
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!fine || reduced) return
-
+    if (!window.matchMedia('(pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const root = document.documentElement
     let frame = 0
     let x = 0
