@@ -62,11 +62,12 @@ const fallbacks: Record<string, LucideIcon> = {
   webhooks: Webhook,
 }
 
-/** Very dark brand colours (Next.js, GitHub, Cursor...) would vanish on the dark theme, so lighten them. */
-function readable(hex: string) {
+/** Very dark brand colours (Next.js, GitHub, Cursor...) would vanish on a dark theme, so they use a
+ *  theme variable instead: light grey in dark mode, near-black in light mode. */
+function brandFill(hex: string) {
   const n = parseInt(hex, 16)
   const lum = (0.299 * ((n >> 16) & 255) + 0.587 * ((n >> 8) & 255) + 0.114 * (n & 255)) / 255
-  return lum < 0.35 ? '#e2e8f0' : `#${hex}`
+  return lum < 0.35 ? 'var(--brand-dark)' : `#${hex}`
 }
 
 /** The logo for a technology, or nothing if there is none. Decorative: the text label stays next to it. */
@@ -75,7 +76,7 @@ export function TechIcon({ name, className = 'size-4' }: { name: string; classNa
   const brand = brands[k]
   if (brand) {
     return (
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className={`${className} shrink-0`} fill={readable(brand.hex)}>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" className={`${className} shrink-0`} style={{ fill: brandFill(brand.hex) }}>
         <path d={brand.path} />
       </svg>
     )

@@ -22,7 +22,7 @@ export function Hero() {
 
           <h1
             aria-label={profile.name}
-            className="mt-6 whitespace-nowrap text-[clamp(2.3rem,5.4vw,4.9rem)] font-extrabold leading-[1] tracking-[-0.045em] text-white [text-shadow:0_0_60px_rgb(129_140_248/0.5)]"
+            className="mt-6 whitespace-nowrap text-[clamp(2.3rem,5.4vw,4.9rem)] font-extrabold leading-[1] tracking-[-0.045em] text-white [text-shadow:var(--h1-glow)]"
           >
             {profile.name.split(' ').map((word) => (
               <span key={word} aria-hidden className="mr-[0.22em] inline-block whitespace-nowrap">

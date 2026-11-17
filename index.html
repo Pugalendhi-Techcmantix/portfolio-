@@ -7,7 +7,21 @@
     <meta name="description" content="Pugalendhi S is a web developer in Trichy building React, Next.js, Node.js and Laravel apps, plus AI chatbots and automations with RAG and n8n." />
     <meta name="author" content="Pugalendhi S" />
     <meta name="theme-color" content="#070912" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      // Set the theme before first paint so there is no flash: saved choice, else the system setting.
+      ;(function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          document.documentElement.dataset.theme = t
+          var m = document.querySelector('meta[name="theme-color"]')
+          if (m) m.setAttribute('content', t === 'light' ? '#eef1fa' : '#070912')
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark'
+        }
+      })()
+    </script>
     <meta property="og:title" content="Pugalendhi S, web developer" />
     <meta property="og:description" content="React, Next.js, Node.js, Laravel, RAG chatbots and n8n automations." />
     <meta property="og:type" content="profile" />

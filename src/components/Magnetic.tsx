@@ -13,7 +13,7 @@ type Props = {
 
 const styles = {
   primary:
-    'bg-gradient-to-br from-iris via-indigo-400 to-rose text-white shadow-[0_8px_30px_rgb(129_140_248/0.45),inset_0_1px_0_rgb(255_255_255/0.4)] hover:shadow-[0_10px_44px_rgb(244_114_182/0.5),inset_0_1px_0_rgb(255_255_255/0.4)]',
+    'bg-gradient-to-br from-iris via-indigo-400 to-rose text-[#ffffff] shadow-[0_8px_30px_rgb(129_140_248/0.45),inset_0_1px_0_rgb(255_255_255/0.4)] hover:shadow-[0_10px_44px_rgb(244_114_182/0.5),inset_0_1px_0_rgb(255_255_255/0.4)]',
   glass: 'glass-lite text-slate-100 hover:bg-white/10',
 }
 

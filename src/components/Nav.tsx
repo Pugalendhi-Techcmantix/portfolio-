@@ -1,5 +1,7 @@
 import clsx from 'clsx'
+import { Moon, Sun } from 'lucide-react'
 import { profile } from '../data/profile'
+import { useTheme } from '../lib/theme'
 import { SECTION_IDS, useActiveSection } from '../lib/useActiveSection'
 
 const labels: Record<(typeof SECTION_IDS)[number], string> = {
@@ -15,6 +17,7 @@ const mobile = new Set(['about', 'projects', 'contact'])
 /** Floating glass navigation pill. The active section is highlighted. */
 export function Nav() {
   const active = useActiveSection()
+  const { theme, toggle } = useTheme()
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
@@ -22,7 +25,7 @@ export function Nav() {
         <a
           href="#top"
           aria-label={`PS: ${profile.name}, back to top`}
-          className="grid size-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-iris to-rose text-sm font-bold text-white shadow-[0_0_22px_rgb(129_140_248/0.55)] transition-transform duration-300 hover:scale-105"
+          className="grid size-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-iris to-rose text-sm font-bold text-[#ffffff] shadow-[0_0_22px_rgb(129_140_248/0.55)] transition-transform duration-300 hover:scale-105"
         >
           PS
         </a>
@@ -39,6 +42,23 @@ export function Nav() {
             </li>
           ))}
         </ul>
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          className="group relative ml-1 grid size-11 shrink-0 place-items-center overflow-hidden rounded-full text-slate-200 transition-colors hover:bg-white/10"
+        >
+          <Sun
+            aria-hidden
+            className={clsx('absolute size-5 transition-all duration-500 ease-out', theme === 'dark' ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0')}
+            strokeWidth={1.9}
+          />
+          <Moon
+            aria-hidden
+            className={clsx('absolute size-5 transition-all duration-500 ease-out', theme === 'light' ? 'rotate-0 scale-100 opacity-100' : 'rotate-90 scale-0 opacity-0')}
+            strokeWidth={1.9}
+          />
+        </button>
       </nav>
     </header>
   )

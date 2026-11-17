@@ -60,7 +60,7 @@ export function HeroVisual() {
         <div className="float" style={{ ['--ft' as string]: '8.5s', ['--fd' as string]: '-2s' }}>
           <Glass tilt className="space-y-3 p-4 text-sm">
             <div className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-white/10 px-3.5 py-2 text-slate-200">What does the report say about Q3?</div>
-            <div className="w-fit max-w-[90%] rounded-2xl rounded-bl-md bg-gradient-to-br from-iris/70 to-rose/60 px-3.5 py-2 text-white">Revenue grew steadily. Here is a summary from the Drive file.</div>
+            <div className="w-fit max-w-[90%] rounded-2xl rounded-bl-md bg-gradient-to-br from-iris/70 to-rose/60 px-3.5 py-2 text-[#ffffff]">Revenue grew steadily. Here is a summary from the Drive file.</div>
             <div className="dots flex w-fit gap-1 rounded-full bg-white/10 px-3 py-2">
               <span style={{ ['--i' as string]: 0 }} className="size-1.5 rounded-full bg-slate-300" />
               <span style={{ ['--i' as string]: 1 }} className="size-1.5 rounded-full bg-slate-300" />
@@ -75,9 +75,9 @@ export function HeroVisual() {
           <Glass tilt className="p-4">
             <svg viewBox="0 0 260 70" className="w-full" fill="none">
               <path d="M44 35 H100 M160 35 H216" stroke="#67e8f9" strokeWidth="2" strokeDasharray="3 6" strokeLinecap="round" />
-              <rect x="6" y="16" width="38" height="38" rx="11" fill="rgb(255 255 255 / 0.12)" stroke="rgb(255 255 255 / 0.35)" />
-              <rect x="100" y="12" width="60" height="46" rx="13" fill="url(#g)" stroke="rgb(255 255 255 / 0.4)" />
-              <rect x="216" y="16" width="38" height="38" rx="11" fill="rgb(255 255 255 / 0.12)" stroke="rgb(255 255 255 / 0.35)" />
+              <rect x="6" y="16" width="38" height="38" rx="11" className="fill-white/12 stroke-white/35" />
+              <rect x="100" y="12" width="60" height="46" rx="13" fill="url(#g)" className="stroke-white/40" />
+              <rect x="216" y="16" width="38" height="38" rx="11" className="fill-white/12 stroke-white/35" />
               <circle cx="25" cy="35" r="5" fill="#34d399" />
               <circle cx="235" cy="35" r="5" fill="#f472b6" />
               <defs>

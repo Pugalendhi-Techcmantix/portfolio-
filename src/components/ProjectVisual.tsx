@@ -7,16 +7,16 @@ export function ProjectVisual({ kind }: { kind: ProjectIcon }) {
       {kind === 'chat' && (
         <div className="space-y-2.5 text-xs">
           <div className="ml-auto w-fit max-w-[80%] rounded-2xl rounded-br-sm bg-white/12 px-3 py-1.5 text-slate-200">Find the refund policy</div>
-          <div className="w-fit max-w-[85%] rounded-2xl rounded-bl-sm bg-gradient-to-br from-iris/80 to-rose/70 px-3 py-1.5 text-white">Found it in policy.pdf, page 4.</div>
+          <div className="w-fit max-w-[85%] rounded-2xl rounded-bl-sm bg-gradient-to-br from-iris/80 to-rose/70 px-3 py-1.5 text-[#ffffff]">Found it in policy.pdf, page 4.</div>
           <div className="w-fit rounded-full bg-white/10 px-2.5 py-1 text-[10px] text-aqua">Source: Drive</div>
         </div>
       )}
       {kind === 'flow' && (
         <svg viewBox="0 0 300 120" className="size-full" fill="none">
           <path d="M70 60 H122 M178 60 H230 M150 36 V14 M150 84 V106" stroke="#67e8f9" strokeWidth="2" strokeDasharray="3 6" strokeLinecap="round" />
-          <rect x="22" y="38" width="48" height="44" rx="13" fill="rgb(255 255 255 / 0.1)" stroke="rgb(255 255 255 / 0.3)" />
-          <rect x="122" y="32" width="56" height="56" rx="16" fill="url(#pf)" stroke="rgb(255 255 255 / 0.4)" />
-          <rect x="230" y="38" width="48" height="44" rx="13" fill="rgb(255 255 255 / 0.1)" stroke="rgb(255 255 255 / 0.3)" />
+          <rect x="22" y="38" width="48" height="44" rx="13" className="fill-white/10 stroke-white/30" />
+          <rect x="122" y="32" width="56" height="56" rx="16" fill="url(#pf)" className="stroke-white/40" />
+          <rect x="230" y="38" width="48" height="44" rx="13" className="fill-white/10 stroke-white/30" />
           <circle cx="150" cy="10" r="7" fill="#34d399" />
           <circle cx="150" cy="110" r="7" fill="#fbbf24" />
           <defs>
@@ -62,12 +62,12 @@ export function ProjectVisual({ kind }: { kind: ProjectIcon }) {
         </div>
       )}
       {kind === 'code' && (
-        <div className="h-full rounded-xl bg-black/30 p-3 font-mono text-[11px] leading-5 text-slate-300">
+        <div className="h-full rounded-xl bg-[#0f172a] p-3 font-mono text-[11px] leading-5 text-[#cbd5e1]">
           <div>
-            <span className="text-iris">function</span> <span className="text-aqua">solve</span>(n) {'{'}
+            <span className="text-[#a5b4fc]">function</span> <span className="text-[#67e8f9]">solve</span>(n) {'{'}
           </div>
           <div className="pl-4">
-            <span className="text-iris">return</span> n * 2
+            <span className="text-[#a5b4fc]">return</span> n * 2
           </div>
           <div>{'}'}</div>
           <span className="absolute bottom-3 right-3 rounded-full bg-mint/85 px-3 py-1 text-[11px] font-semibold text-ink">Run</span>
