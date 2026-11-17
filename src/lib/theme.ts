@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 
 export type Theme = 'light' | 'dark'
 const KEY = 'theme'
@@ -18,8 +18,8 @@ function apply(theme: Theme, animate: boolean) {
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', COLORS[theme])
 }
 
-/** Light/dark theme. The first value comes from the choice saved in this browser, else the system setting
- *  (set by a tiny script in index.html before first paint). After a manual choice the system setting is ignored. */
+/** Light/dark theme. The first value comes from the choice saved in this browser, otherwise dark
+ *  (set by a tiny script in index.html before first paint). */
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(current)
 
@@ -31,23 +31,6 @@ export function useTheme() {
     } catch {
       /* storage blocked: the choice still applies for this visit */
     }
-  }, [])
-
-  // Follow the system setting until the visitor picks a theme themselves.
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: light)')
-    const onChange = (e: MediaQueryListEvent) => {
-      try {
-        if (localStorage.getItem(KEY)) return
-      } catch {
-        /* ignore */
-      }
-      const next: Theme = e.matches ? 'light' : 'dark'
-      apply(next, true)
-      setTheme(next)
-    }
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
   }, [])
 
   return { theme, toggle: () => choose(theme === 'dark' ? 'light' : 'dark') }

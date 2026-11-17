@@ -9,11 +9,11 @@
     <meta name="theme-color" content="#070912" />
     <meta name="color-scheme" content="dark light" />
     <script>
-      // Set the theme before first paint so there is no flash: saved choice, else the system setting.
+      // Set the theme before first paint so there is no flash: the saved choice, otherwise dark.
       ;(function () {
         try {
           var t = localStorage.getItem('theme')
-          if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          if (t !== 'light' && t !== 'dark') t = 'dark'
           document.documentElement.dataset.theme = t
           var m = document.querySelector('meta[name="theme-color"]')
           if (m) m.setAttribute('content', t === 'light' ? '#eef1fa' : '#070912')
