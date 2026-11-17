@@ -19,9 +19,9 @@ export function Skills() {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <h2 id="skills-title" className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-[0.95] tracking-[-0.03em]">
-              My toy box
+              Tech stack
             </h2>
-            <p className="mt-4 max-w-[44ch] text-lg">The tools I reach for. Go on, pick them up and throw them around.</p>
+            <p className="mt-4 max-w-[44ch] text-lg">What I use day to day. Pick them up and move them around if you like.</p>
           </div>
           <button
             type="button"

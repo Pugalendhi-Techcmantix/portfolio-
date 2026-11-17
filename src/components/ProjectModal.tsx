@@ -55,12 +55,6 @@ export function ProjectModal({ project, onClose }: Props) {
     }
   }, [lenis])
 
-  const sections = [
-    { title: 'The challenge', body: project.challenge },
-    { title: 'What I did', body: project.approach },
-    { title: 'What happened', body: project.outcome },
-  ]
-
   return (
     <div className="fixed inset-0 z-[100] grid place-items-center p-3 sm:p-6">
       <motion.div
@@ -104,7 +98,7 @@ export function ProjectModal({ project, onClose }: Props) {
           animate={{ opacity: 1, y: 0, transition: { ...springs.gentle, delay: 0.12 } }}
         >
           <p className="text-base font-semibold">
-            {project.role}, {project.year}
+            {project.status}, {project.role}
           </p>
           <h2 id="case-title" className="mt-1 font-display text-[clamp(2rem,5vw,3.25rem)] font-extrabold leading-none tracking-[-0.03em]">
             {project.title}
@@ -116,19 +110,23 @@ export function ProjectModal({ project, onClose }: Props) {
               </li>
             ))}
           </ul>
-          <div className="mt-8 grid gap-7">
-            {sections.map((s) => (
-              <section key={s.title}>
-                <h3 className="font-display text-lg font-bold">{s.title}</h3>
-                <p className="mt-2 max-w-[62ch] text-lg">{s.body}</p>
-              </section>
+          <p className="mt-6 max-w-[62ch] text-lg">{project.summary}</p>
+          <h3 className="mt-8 font-display text-lg font-bold">What it does</h3>
+          <ul className="mt-3 grid max-w-[62ch] gap-2.5 text-lg">
+            {project.highlights.map((h) => (
+              <li key={h} className="flex gap-3">
+                <span aria-hidden className="mt-2.5 size-2.5 shrink-0 rounded-full border-2 border-ink bg-bubblegum" />
+                {h}
+              </li>
             ))}
-          </div>
+          </ul>
           <a
             href={project.href}
+            target="_blank"
+            rel="noreferrer"
             className="mt-10 inline-flex min-h-12 items-center rounded-full border-2 border-ink bg-bubblegum px-6 font-display text-sm font-semibold text-plum shadow-toy"
           >
-            Visit the live project
+            {project.hrefLabel}
           </a>
         </motion.div>
       </motion.div>

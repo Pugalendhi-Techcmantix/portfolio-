@@ -1,27 +1,22 @@
-// Placeholder experience, newest first: replace with your own.
+// Newest first.
 export const experience = [
   {
-    years: '2024 – now',
-    role: 'Freelance creative developer',
-    place: 'Independent',
-    summary: 'Interactive launch sites and playful product moments for studios and startups across Europe.',
+    years: 'Oct 2024 to now',
+    role: 'Web developer',
+    place: 'Techcmantix Technologies Pvt Ltd, Trichy',
+    summary:
+      'Building web apps with React, Next.js, Node.js and Laravel, with MySQL and MongoDB behind them. Also working on AI features: RAG chatbots over Drive files with Ollama and Supabase, and n8n automations.',
   },
   {
-    years: '2021 – 2024',
-    role: 'Senior front-end developer',
-    place: 'Studio Placeholder',
-    summary: 'Led front-end on award-winning campaign sites and built the studio’s motion component library.',
+    years: 'Internship',
+    role: 'Junior software developer intern',
+    place: 'ROCKG Micro Technology (India) Pvt Ltd, Trichy',
+    summary: 'Completed several proof-of-concept tasks between April and June.',
   },
   {
-    years: '2019 – 2021',
-    role: 'Front-end developer',
-    place: 'Brightside Apps',
-    summary: 'Built onboarding flows and design-system components for a consumer finance app with 2M users.',
-  },
-  {
-    years: '2018',
-    role: 'Interaction design intern',
-    place: 'Museum of Small Things',
-    summary: 'Prototyped touch exhibits for kids. Learned that six-year-olds are the toughest usability testers.',
+    years: 'Education',
+    role: 'Master of Computer Applications',
+    place: 'Bishop Heber College, Trichy',
+    summary: 'Served as president of the MCA department.',
   },
 ]

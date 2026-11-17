@@ -1,30 +1,31 @@
-// Placeholder content: replace with your own details.
 export const profile = {
-  firstName: 'Mika',
-  lastName: 'Arden',
-  role: 'Creative developer',
-  tagline: 'I build websites and interfaces you want to poke, squish and play with, without ever getting in the way of what people came to do.',
+  firstName: 'Pugalendhi',
+  lastName: 'S',
+  role: 'Web developer',
+  company: 'Techcmantix Technologies Pvt Ltd',
+  tagline:
+    'I build React, Next.js and Node.js web apps, and AI features like RAG chatbots and n8n automations, at Techcmantix Technologies in Trichy.',
   toyHint: 'Psst: the shapes are clickable.',
-  email: 'hello@mika-arden.dev',
-  location: 'Lisbon, Portugal',
-  availability: 'Open to freelance from March',
+  email: 'pugalp702@gmail.com',
+  phone: '+91 78715 33595',
+  phoneHref: 'tel:+917871533595',
+  location: 'Trichy, India',
+  availability: 'Working at Techcmantix Technologies',
   about: {
-    heading: 'Hi, I’m Mika.',
+    heading: 'Hi, I’m Pugalendhi.',
     paragraphs: [
-      'I’m a front-end developer who sits right where design and engineering overlap. For the last six years I’ve helped studios and startups turn flat mockups into interfaces with weight, bounce and personality.',
-      'I care about the details people feel before they notice them: a button that squishes when pressed, a page that scrolls like butter, motion that explains instead of decorates. And I always ship it accessible and fast.',
+      'I’m a web developer at Techcmantix Technologies in Trichy. Since October 2024 I’ve been building web apps with React, Next.js, Node.js and Laravel, and I like taking an idea from a design all the way to something people can use.',
+      'Lately I’m also building AI features: RAG chatbots that answer questions from Drive files, using Ollama for the model and Supabase for storage, and n8n workflows that automate repetitive work. I’m a self-driven learner with an MCA from Bishop Heber College, where I was president of the department.',
     ],
     facts: [
-      { label: 'Based in Lisbon', color: 'lemon' },
-      { label: 'Currently learning shaders', color: 'pool' },
-      { label: 'Coffee, then code', color: 'bubblegum' },
+      { label: 'Based in Trichy', color: 'lemon' },
+      { label: '2 years as a web developer', color: 'pool' },
+      { label: 'Learning RAG and AI agents', color: 'bubblegum' },
     ],
   },
   socials: [
-    { label: 'GitHub', href: 'https://github.com/' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-    { label: 'Dribbble', href: 'https://dribbble.com/' },
-    { label: 'Read.cv', href: 'https://read.cv/' },
+    { label: 'GitHub', href: 'https://github.com/PugalGamer' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/pugalendhi-s-9a5229280' },
   ],
 } as const
 

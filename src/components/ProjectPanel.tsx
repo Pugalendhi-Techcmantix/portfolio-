@@ -65,7 +65,7 @@ export function ProjectPanel({ project, index, wide, onOpen }: Props) {
         <div className="p-5 md:p-6">
           <div className="flex items-baseline justify-between gap-4">
             <h3 className="font-display text-2xl font-bold tracking-[-0.02em] md:text-3xl">{project.title}</h3>
-            <span className="text-sm font-semibold">{project.year}</span>
+            <span className="shrink-0 text-sm font-semibold">{project.status}</span>
           </div>
           <p className="mt-2 max-w-[48ch] text-base leading-snug">{project.summary}</p>
           <span className="mt-4 inline-flex items-center rounded-full border-2 border-plum bg-white/70 px-4 py-1.5 text-sm font-semibold">

@@ -41,12 +41,12 @@ export function Contact() {
       className="relative flex min-h-svh flex-col items-center justify-center px-5 py-28 text-center sm:px-8"
     >
       <h2 id="contact-title" className="font-display text-[clamp(2.6rem,9vw,7.5rem)] font-black leading-[0.9] tracking-[-0.045em]">
-        Let’s make
+        Let’s build
         <br />
-        something fun.
+        something together.
       </h2>
       <p className="mt-6 max-w-[40ch] text-xl">
-        Got a project, a weird idea, or just want to say hi? My inbox is always open.
+        Have a project, a role or an idea? Send me an email or call, and I’ll get back to you.
       </p>
 
       <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
@@ -66,6 +66,14 @@ export function Contact() {
       </p>
 
       <ul aria-label="Elsewhere" className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
+        <li>
+          <a
+            href={profile.phoneHref}
+            className="inline-flex min-h-11 items-center font-semibold underline decoration-2 underline-offset-4 hover:decoration-bubblegum"
+          >
+            {profile.phone}
+          </a>
+        </li>
         {profile.socials.map((s) => (
           <li key={s.label}>
             <a

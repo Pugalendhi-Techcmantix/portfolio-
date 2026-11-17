@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState } from 'react'
 import { Cursor } from './components/Cursor'
+import { Marquee } from './components/Marquee'
 import { Nav } from './components/Nav'
 import { useReducedMotion } from './lib/media'
 import { useTrackSections } from './lib/scroll-store'
@@ -50,6 +51,7 @@ export default function App() {
       <ToyLayer />
       <main id="main" className="relative z-10">
         <Hero />
+        <Marquee />
         <About />
         <Projects />
         <Skills />

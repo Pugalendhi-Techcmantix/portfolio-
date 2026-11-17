@@ -40,7 +40,7 @@ export function Experience() {
     <section id="experience" aria-labelledby="experience-title" className="relative px-5 py-28 sm:px-8 md:px-14 md:py-40">
       <div className="max-w-3xl">
         <h2 id="experience-title" className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-[0.95] tracking-[-0.03em]">
-          Where I’ve played
+          Experience and education
         </h2>
         <div className="relative mt-14">
           <div aria-hidden className="absolute bottom-2 left-[13px] top-2 w-1 rounded-full bg-ink/15" />

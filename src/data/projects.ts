@@ -1,78 +1,91 @@
 import type { AccentColor } from './profile'
 
-export type ArtStyle = 'garden' | 'waves' | 'planes' | 'map'
+export type ArtStyle = 'chat' | 'flow' | 'tasks' | 'auth'
 
 export type Project = {
   id: string
   title: string
-  year: string
+  status: string
   role: string
   summary: string
   tags: string[]
   color: AccentColor
   art: ArtStyle
-  challenge: string
-  approach: string
-  outcome: string
+  highlights: string[]
   href: string
+  hrefLabel: string
 }
 
-// Placeholder projects: replace with your own work.
+const github = 'https://github.com/PugalGamer'
+
 export const projects: Project[] = [
   {
-    id: 'pocket-garden',
-    title: 'Pocket Garden',
-    year: '2026',
-    role: 'Design and front-end',
-    summary: 'A launch site for a plant-care app where the plants grow as you scroll.',
-    tags: ['React', 'three.js', 'GSAP'],
-    color: 'grass',
-    art: 'garden',
-    challenge: 'The app’s whole pitch is “watch your plants thrive”, but static screenshots made it look like every other to-do list.',
-    approach: 'I built a scroll-driven garden in three.js: each section waters the scene a little more, and the hero plant reacts to your cursor like it’s reaching for light.',
-    outcome: 'Waitlist sign-ups were 3.2× the previous landing page in the first month.',
-    href: '#',
-  },
-  {
-    id: 'loudmouth-radio',
-    title: 'Loudmouth Radio',
-    year: '2025',
-    role: 'Front-end lead',
-    summary: 'A live player for an independent radio station that dances to whatever is on air.',
-    tags: ['Web Audio', 'Canvas', 'TypeScript'],
+    id: 'rag-drive-chatbot',
+    title: 'Drive RAG chatbot',
+    status: 'In progress',
+    role: 'AI and full stack',
+    summary: 'A chatbot that answers questions from files stored in Google Drive.',
+    tags: ['RAG', 'Ollama', 'Supabase'],
     color: 'bubblegum',
-    art: 'waves',
-    challenge: 'Listeners kept the tab in the background, so the station had no way to show its personality or its schedule.',
-    approach: 'An audio-reactive visualiser, a schedule that reads like a gig poster, and a mini-player that follows you across the site without dropping a beat.',
-    outcome: 'Average listening sessions grew from 18 to 41 minutes.',
-    href: '#',
+    art: 'chat',
+    highlights: [
+      'Reads documents from Drive and splits them into searchable pieces.',
+      'Stores the embeddings in Supabase for fast similarity search.',
+      'Runs a local model with Ollama, so documents stay on your own machine.',
+      'Answers from the retrieved text instead of guessing.',
+    ],
+    href: github,
+    hrefLabel: 'See my GitHub',
   },
   {
-    id: 'fold-and-fly',
-    title: 'Fold & Fly',
-    year: '2025',
-    role: 'Creative development',
-    summary: 'A paper-plane builder for a museum’s kids’ week. Fold it, then throw it across the screen.',
-    tags: ['React Three Fiber', 'Physics', 'Touch'],
+    id: 'n8n-automations',
+    title: 'n8n automations',
+    status: 'Work projects',
+    role: 'Automation',
+    summary: 'Workflows that connect apps and APIs so repetitive work runs on its own.',
+    tags: ['n8n', 'APIs', 'Webhooks'],
     color: 'pool',
-    art: 'planes',
-    challenge: 'It had to run on the museum’s ageing touch kiosks and be usable by a six-year-old with no instructions.',
-    approach: 'Big, forgiving gestures, a physics model tuned for fun rather than accuracy, and a render budget that held 60fps on hardware from 2017.',
-    outcome: 'Over 12,000 planes thrown during the week, and the kiosk version was kept as a permanent exhibit.',
-    href: '#',
+    art: 'flow',
+    highlights: [
+      'Visual workflows that link apps, databases and APIs.',
+      'Triggered by webhooks, schedules or form submissions.',
+      'Chatbot and RAG steps can sit inside a workflow.',
+    ],
+    href: github,
+    hrefLabel: 'See my GitHub',
   },
   {
-    id: 'snack-atlas',
-    title: 'Snack Atlas',
-    year: '2024',
-    role: 'Design and front-end',
-    summary: 'A hand-drawn map of the city’s best street food, built to be explored rather than searched.',
-    tags: ['Mapbox', 'Motion', 'Accessibility'],
+    id: 'task-manager',
+    title: 'Task management app',
+    status: 'Personal project',
+    role: 'Front end',
+    summary: 'A clean React app for planning work, with tasks you can add, edit and finish.',
+    tags: ['React', 'JavaScript', 'CSS'],
     color: 'lemon',
-    art: 'map',
-    challenge: 'Map interfaces are notoriously hard for keyboard and screen reader users, and this one was meant to be fun for everyone.',
-    approach: 'Every stall is also a list item, and the map follows your focus. Springy pins, a custom tile style, and filters that animate the map instead of reloading it.',
-    outcome: 'Featured by the city tourism board and passed a full WCAG 2.2 AA audit.',
-    href: '#',
+    art: 'tasks',
+    highlights: [
+      'Create, edit, complete and delete tasks.',
+      'Responsive layout that works on phones and desktops.',
+      'Built with React components and hooks.',
+    ],
+    href: github,
+    hrefLabel: 'See my GitHub',
+  },
+  {
+    id: 'mern-auth',
+    title: 'MERN app with Google sign-in',
+    status: 'Personal project',
+    role: 'Full stack',
+    summary: 'A MERN CRUD app with separate user and admin pages behind Google login.',
+    tags: ['MongoDB', 'Express', 'React', 'Node.js'],
+    color: 'grass',
+    art: 'auth',
+    highlights: [
+      'Sign in with Google.',
+      'Separate pages for regular users and admins.',
+      'Full create, read, update and delete on a MongoDB database.',
+    ],
+    href: github,
+    hrefLabel: 'See my GitHub',
   },
 ]

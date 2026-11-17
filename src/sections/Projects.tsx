@@ -66,10 +66,10 @@ export function Projects() {
               id="projects-title"
               className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-[0.95] tracking-[-0.03em]"
             >
-              Things I’ve made
+              Selected work
             </h2>
             <p className="mt-5 max-w-[36ch] text-lg">
-              A few favourite projects from the last couple of years. Each one has a short story behind it.
+              Projects from work and from my own practice. Open any card to see what it does.
             </p>
           </header>
           {projects.map((p, i) => (
