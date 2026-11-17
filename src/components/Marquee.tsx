@@ -24,7 +24,7 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
 /** Two opposite-moving rows of the tech stack (transform only). Decorative: the full list is in Skills. */
 export function Marquee() {
   return (
-    <div aria-hidden className="relative py-6 [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
+    <div aria-hidden className="relative py-6 mask-[linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
       <Row items={rowA} />
       <Row items={rowB} reverse />
     </div>
