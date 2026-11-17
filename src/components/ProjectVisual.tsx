@@ -27,19 +27,51 @@ export function ProjectVisual({ kind }: { kind: ProjectIcon }) {
           </defs>
         </svg>
       )}
-      {kind === 'tasks' && (
-        <ul className="space-y-2.5 text-xs">
-          {[
-            ['Design the layout', true],
-            ['Build the components', true],
-            ['Write the tests', false],
-          ].map(([t, done]) => (
-            <li key={String(t)} className="flex items-center gap-2.5 rounded-xl bg-white/[0.07] px-3 py-2 text-slate-200">
-              <span className={`grid size-4 place-items-center rounded-md border ${done ? 'border-mint bg-mint/80 text-ink' : 'border-white/30'}`}>{done && '✓'}</span>
-              <span className={done ? 'text-slate-400 line-through' : ''}>{t}</span>
-            </li>
-          ))}
-        </ul>
+      {kind === 'dashboard' && (
+        <div className="flex h-full gap-3">
+          <div className="flex flex-1 items-end gap-2 rounded-xl bg-white/[0.06] p-3">
+            {[40, 65, 50, 85, 60, 95].map((h, i) => (
+              <span key={i} className="flex-1 rounded-t-md bg-gradient-to-t from-iris/60 to-aqua/80" style={{ height: `${h}%` }} />
+            ))}
+          </div>
+          <div className="grid w-20 gap-2">
+            <div className="grid place-items-center rounded-xl bg-white/[0.08]">
+              <span className="size-5 rounded-full bg-mint/80 shadow-[0_0_14px_rgb(52_211_153/0.7)]" />
+            </div>
+            <div className="grid place-items-center rounded-xl bg-white/[0.08]">
+              <span className="size-5 rounded-full bg-amber-300/80 shadow-[0_0_14px_rgb(252_211_77/0.7)]" />
+            </div>
+          </div>
+        </div>
+      )}
+      {kind === 'portal' && (
+        <div className="space-y-2.5">
+          <div className="flex items-center gap-2">
+            <span className="size-6 rounded-full bg-gradient-to-br from-iris to-rose" />
+            <span className="h-2.5 w-24 rounded-full bg-white/20" />
+            <span className="ml-auto h-6 w-14 rounded-full bg-white/10" />
+          </div>
+          <div className="grid grid-cols-3 gap-2.5">
+            {['from-iris/50', 'from-aqua/50', 'from-rose/50'].map((c) => (
+              <div key={c} className={`h-16 rounded-xl bg-gradient-to-br ${c} to-white/5 p-2`}>
+                <span className="block h-2 w-8 rounded-full bg-white/40" />
+              </div>
+            ))}
+          </div>
+          <span className="block h-2.5 w-3/4 rounded-full bg-white/15" />
+        </div>
+      )}
+      {kind === 'code' && (
+        <div className="h-full rounded-xl bg-black/30 p-3 font-mono text-[11px] leading-5 text-slate-300">
+          <div>
+            <span className="text-iris">function</span> <span className="text-aqua">solve</span>(n) {'{'}
+          </div>
+          <div className="pl-4">
+            <span className="text-iris">return</span> n * 2
+          </div>
+          <div>{'}'}</div>
+          <span className="absolute bottom-3 right-3 rounded-full bg-mint/85 px-3 py-1 text-[11px] font-semibold text-ink">Run</span>
+        </div>
       )}
       {kind === 'auth' && (
         <div className="flex h-full items-center justify-center gap-4">

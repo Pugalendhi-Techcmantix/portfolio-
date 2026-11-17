@@ -1,13 +1,9 @@
-import clsx from 'clsx'
 import { Glass } from '../components/Glass'
 import { ProjectVisual } from '../components/ProjectVisual'
 import { SectionTitle } from '../components/SectionTitle'
 import { Tag } from '../components/Tag'
 import { profile } from '../data/profile'
 import { projects } from '../data/projects'
-
-// Bento layout: wide, narrow, narrow, wide on desktop.
-const spans = ['lg:col-span-4', 'lg:col-span-2', 'lg:col-span-2', 'lg:col-span-4']
 
 export function Projects() {
   return (
@@ -16,9 +12,9 @@ export function Projects() {
         <SectionTitle id="projects-title" intro="Work projects and personal builds. Move your cursor over a card.">
           Selected projects
         </SectionTitle>
-        <ul className="grid gap-6 lg:grid-cols-6">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
-            <li key={p.id} className={clsx('reveal', spans[i])} style={{ ['--i' as string]: i % 2 }}>
+            <li key={p.id} className="reveal" style={{ ['--i' as string]: i % 3 }}>
               <Glass tilt className="flex h-full flex-col p-5 sm:p-6">
                 <ProjectVisual kind={p.icon} />
                 <div className="mt-5 flex items-baseline justify-between gap-4">

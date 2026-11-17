@@ -1,4 +1,4 @@
-export type ProjectIcon = 'chat' | 'flow' | 'tasks' | 'auth'
+export type ProjectIcon = 'dashboard' | 'portal' | 'code' | 'chat' | 'flow' | 'auth'
 
 export type Project = {
   id: string
@@ -10,7 +10,39 @@ export type Project = {
   icon: ProjectIcon
 }
 
+// Source: resume, plus the AI work described by the owner.
 export const projects: Project[] = [
+  {
+    id: 'quality-management',
+    title: 'Digital Quality Management System',
+    status: 'Work project',
+    summary: 'A web application to manage and track quality processes.',
+    highlights: ['Tracks quality processes in one place.', 'Improves workflow efficiency and data handling.'],
+    tags: ['React.js'],
+    icon: 'dashboard',
+  },
+  {
+    id: 'customer-portal',
+    title: 'Customer Portal',
+    status: 'Work project',
+    summary: 'A user-friendly portal where customers use services and manage their data.',
+    highlights: ['Customers can access services.', 'Customers can manage their data and interact with the system.'],
+    tags: ['React.js'],
+    icon: 'portal',
+  },
+  {
+    id: 'coding-documents',
+    title: 'Coding Document Application',
+    status: 'MERN project',
+    summary: 'A coding platform with an online compiler and a document-style view of questions and solutions.',
+    highlights: [
+      'Online compiler for running code.',
+      'Form to add, edit and delete coding questions with their answers and code.',
+      'Document view that shows all questions, answers and solutions in an organised format.',
+    ],
+    tags: ['MongoDB', 'Express', 'React', 'Node.js'],
+    icon: 'code',
+  },
   {
     id: 'rag-drive-chatbot',
     title: 'Drive RAG chatbot',
@@ -25,25 +57,13 @@ export const projects: Project[] = [
     icon: 'chat',
   },
   {
-    id: 'n8n-automations',
-    title: 'n8n automations',
-    status: 'Work projects',
-    summary: 'Workflows that connect apps and APIs so repetitive work runs on its own.',
-    highlights: [
-      'Visual workflows that link apps, databases and APIs.',
-      'Triggered by webhooks, schedules or form submissions.',
-    ],
-    tags: ['n8n', 'APIs', 'Webhooks'],
+    id: 'n8n-agents',
+    title: 'n8n agents and automations',
+    status: 'Learning and work',
+    summary: 'Workflows that connect apps and APIs, with AI agents, RAG and LLMs inside them.',
+    highlights: ['Visual workflows that link apps, databases and APIs.', 'AI agent and LLM steps that handle repetitive work.'],
+    tags: ['n8n', 'Agents', 'LLM'],
     icon: 'flow',
-  },
-  {
-    id: 'task-manager',
-    title: 'Task management app',
-    status: 'Personal project',
-    summary: 'A React app for planning work, with tasks you can add, edit and finish.',
-    highlights: ['Create, edit, complete and delete tasks.', 'Responsive layout for phones and desktops.'],
-    tags: ['React', 'JavaScript', 'CSS'],
-    icon: 'tasks',
   },
   {
     id: 'mern-auth',

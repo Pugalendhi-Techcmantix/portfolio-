@@ -2,6 +2,7 @@ import { Backdrop } from './components/Backdrop'
 import { Nav } from './components/Nav'
 import { About } from './sections/About'
 import { Contact } from './sections/Contact'
+import { Education } from './sections/Education'
 import { Experience } from './sections/Experience'
 import { Hero } from './sections/Hero'
 import { Projects } from './sections/Projects'
@@ -24,6 +25,7 @@ export default function App() {
         <Experience />
         <Projects />
         <Skills />
+        <Education />
         <Contact />
       </main>
       <footer className="relative z-10 px-6 pb-12 text-center text-sm text-slate-500">

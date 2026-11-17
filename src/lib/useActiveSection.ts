@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const SECTION_IDS = ['about', 'experience', 'projects', 'skills', 'contact'] as const
+export const SECTION_IDS = ['about', 'experience', 'projects', 'skills', 'education', 'contact'] as const
 export type SectionId = (typeof SECTION_IDS)[number]
 
 /** Returns the section crossing the middle of the viewport, or null while the hero is in view. */

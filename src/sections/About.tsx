@@ -7,7 +7,7 @@ import { skillGroups } from '../data/skills'
 const tools = skillGroups.reduce((sum, g) => sum + g.items.length, 0)
 
 const stats = [
-  { value: 2, suffix: '+', label: 'years building web apps' },
+  { value: 2, suffix: '+', label: 'years as a web developer' },
   { value: projects.length, suffix: '', label: 'featured projects' },
   { value: tools, suffix: '', label: 'tools and technologies' },
 ]

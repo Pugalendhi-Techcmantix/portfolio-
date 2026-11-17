@@ -7,6 +7,7 @@ const labels: Record<(typeof SECTION_IDS)[number], string> = {
   experience: 'Experience',
   projects: 'Projects',
   skills: 'Skills',
+  education: 'Education',
   contact: 'Contact',
 }
 const mobile = new Set(['about', 'projects', 'contact'])
