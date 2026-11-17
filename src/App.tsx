@@ -28,9 +28,6 @@ export default function App() {
         <Education />
         <Contact />
       </main>
-      <footer className="relative z-10 px-6 pb-12 text-center text-sm text-slate-400">
-        Designed and built by Pugalendhi S with React and Tailwind CSS.
-      </footer>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { skillGroups } from '../data/skills'
+import { TechIcon } from './TechIcon'
 
 const all = skillGroups.flatMap((g) => g.items)
 const rowA = all.filter((_, i) => i % 2 === 0)
@@ -10,7 +11,8 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
     <div className="marquee-wrap overflow-hidden py-1.5">
       <div className={`marquee ${reverse ? 'reverse' : ''} gap-4 pr-4`} style={{ ['--mt' as string]: reverse ? '55s' : '48s' }}>
         {doubled.map((t, i) => (
-          <span key={i} className="glass-lite whitespace-nowrap rounded-full px-5 py-2 text-base font-semibold text-slate-100">
+          <span key={i} className="glass-lite inline-flex items-center gap-2.5 whitespace-nowrap rounded-full px-5 py-2 text-base font-semibold text-slate-100">
+            <TechIcon name={t} className="size-5" />
             {t}
           </span>
         ))}
@@ -22,10 +24,7 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
 /** Two opposite-moving rows of the tech stack (transform only). Decorative: the full list is in Skills. */
 export function Marquee() {
   return (
-    <div
-      aria-hidden
-      className="relative py-6 [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]"
-    >
+    <div aria-hidden className="relative py-6 [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
       <Row items={rowA} />
       <Row items={rowB} reverse />
     </div>
