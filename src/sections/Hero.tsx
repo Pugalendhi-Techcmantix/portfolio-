@@ -22,7 +22,7 @@ export function Hero() {
 
           <h1
             aria-label={profile.name}
-            className="mt-6 whitespace-nowrap text-[clamp(2.3rem,5.4vw,4.9rem)] font-extrabold leading-[1] tracking-[-0.045em] text-white [text-shadow:var(--h1-glow)]"
+            className="mt-6 whitespace-nowrap text-[clamp(2.3rem,5.4vw,4.9rem)] font-extrabold leading-none tracking-[-0.045em] text-white text-shadow-(--h1-glow)"
           >
             {profile.name.split(' ').map((word) => (
               <span key={word} aria-hidden className="mr-[0.22em] inline-block whitespace-nowrap">
@@ -39,7 +39,7 @@ export function Hero() {
             <span className="sr-only">I build {profile.words.join(', ')}</span>
             <span aria-hidden>
               I build{' '}
-              <span className="words !grid sm:!inline-grid">
+              <span className="words grid! sm:inline-grid!">
                 {profile.words.map((w, i) => (
                   <span key={w} className="gradient-text" style={{ ['--i' as string]: i }}>
                     {w}

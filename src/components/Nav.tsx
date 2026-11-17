@@ -25,7 +25,7 @@ export function Nav() {
         <a
           href="#top"
           aria-label={`PS: ${profile.name}, back to top`}
-          className="grid size-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-iris to-rose text-sm font-bold text-[#ffffff] shadow-[0_0_22px_rgb(129_140_248/0.55)] transition-transform duration-300 hover:scale-105"
+          className="grid size-11 shrink-0 place-items-center rounded-full bg-linear-to-br from-iris to-rose text-sm font-bold text-[#ffffff] shadow-[0_0_22px_rgb(129_140_248/0.55)] transition-transform duration-300 hover:scale-105"
         >
           PS
         </a>

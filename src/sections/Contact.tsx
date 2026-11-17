@@ -35,8 +35,8 @@ export function Contact() {
     <section id="contact" aria-labelledby="contact-title" className="px-6 py-24 md:px-12 md:py-32 lg:px-20">
       <div className="reveal mx-auto max-w-5xl">
         <Glass className="overflow-hidden p-8 text-center sm:p-14" style={{ ['--r' as string]: '40px' }}>
-          <div aria-hidden className="pointer-events-none absolute -top-32 left-1/2 size-[34rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgb(129_140_248/0.35),transparent_65%)]" />
-          <h2 id="contact-title" className="gradient-text relative text-[clamp(2.4rem,6.5vw,4.75rem)] font-extrabold leading-[1] tracking-[-0.04em]">
+          <div aria-hidden className="pointer-events-none absolute -top-32 left-1/2 size-136 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgb(129_140_248/0.35),transparent_65%)]" />
+          <h2 id="contact-title" className="gradient-text relative text-[clamp(2.4rem,6.5vw,4.75rem)] font-extrabold leading-none tracking-[-0.04em]">
             Let’s build something together.
           </h2>
           <p className="relative mx-auto mt-5 max-w-lg text-lg">

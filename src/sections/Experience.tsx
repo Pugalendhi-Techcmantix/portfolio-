@@ -9,12 +9,12 @@ export function Experience() {
       <div className="mx-auto max-w-4xl">
         <SectionTitle id="experience-title">Experience and education</SectionTitle>
         <div className="relative" data-timeline>
-          <div aria-hidden className="absolute bottom-3 left-[11px] top-3 w-0.5 rounded-full bg-white/10" />
-          <div aria-hidden className="tl-line absolute bottom-3 left-[11px] top-3 w-0.5 rounded-full bg-gradient-to-b from-aqua via-iris to-rose shadow-[0_0_14px_rgb(129_140_248/0.8)]" />
+          <div aria-hidden className="absolute bottom-3 left-2.75 top-3 w-0.5 rounded-full bg-white/10" />
+          <div aria-hidden className="tl-line absolute bottom-3 left-2.75 top-3 w-0.5 rounded-full bg-linear-to-b from-aqua via-iris to-rose shadow-[0_0_14px_rgb(129_140_248/0.8)]" />
           <ol className="space-y-8 pl-12">
             {experience.map((job, i) => (
               <li key={job.role} className="reveal relative" style={{ ['--i' as string]: i }}>
-                <span aria-hidden className="absolute -left-12 top-7 size-6 rounded-full border-2 border-white/70 bg-gradient-to-br from-iris to-rose shadow-[0_0_20px_rgb(129_140_248/0.8)]" />
+                <span aria-hidden className="absolute -left-12 top-7 size-6 rounded-full border-2 border-white/70 bg-linear-to-br from-iris to-rose shadow-[0_0_20px_rgb(129_140_248/0.8)]" />
                 <Glass tilt className="p-6 sm:p-7">
                   <p className="text-sm font-semibold text-aqua">{job.period}</p>
                   <h3 className="mt-1 text-xl font-bold tracking-tight text-white">{job.role}</h3>

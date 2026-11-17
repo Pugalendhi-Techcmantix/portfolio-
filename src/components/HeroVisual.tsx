@@ -32,11 +32,11 @@ export function HeroVisual() {
   }, [])
 
   return (
-    <div ref={root} aria-hidden className="relative hidden h-[34rem] w-full max-w-[34rem] lg:block">
+    <div ref={root} aria-hidden className="relative hidden h-136 w-full max-w-136 lg:block">
       {/* Glow behind the panels so the glass has something to frost */}
-      <div className="absolute left-1/2 top-1/2 size-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(99_102_241/0.5),transparent_65%)]" />
+      <div className="absolute left-1/2 top-1/2 size-104 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(99_102_241/0.5),transparent_65%)]" />
 
-      <div className="hv absolute left-0 top-6 w-[19rem]" style={{ ['--k' as string]: 14 }}>
+      <div className="hv absolute left-0 top-6 w-76" style={{ ['--k' as string]: 14 }}>
         <div className="float" style={{ ['--ft' as string]: '7s' }}>
           <Glass tilt className="p-4 text-[13px] leading-6">
             <div className="mb-3 flex items-center gap-1.5">
@@ -56,11 +56,11 @@ export function HeroVisual() {
         </div>
       </div>
 
-      <div className="hv absolute right-0 top-40 w-[17.5rem]" style={{ ['--k' as string]: 26 }}>
+      <div className="hv absolute right-0 top-40 w-70" style={{ ['--k' as string]: 26 }}>
         <div className="float" style={{ ['--ft' as string]: '8.5s', ['--fd' as string]: '-2s' }}>
           <Glass tilt className="space-y-3 p-4 text-sm">
             <div className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-br-md bg-white/10 px-3.5 py-2 text-slate-200">What does the report say about Q3?</div>
-            <div className="w-fit max-w-[90%] rounded-2xl rounded-bl-md bg-gradient-to-br from-iris/70 to-rose/60 px-3.5 py-2 text-[#ffffff]">Revenue grew steadily. Here is a summary from the Drive file.</div>
+            <div className="w-fit max-w-[90%] rounded-2xl rounded-bl-md bg-linear-to-br from-iris/70 to-rose/60 px-3.5 py-2 text-[#ffffff]">Revenue grew steadily. Here is a summary from the Drive file.</div>
             <div className="dots flex w-fit gap-1 rounded-full bg-white/10 px-3 py-2">
               <span style={{ ['--i' as string]: 0 }} className="size-1.5 rounded-full bg-slate-300" />
               <span style={{ ['--i' as string]: 1 }} className="size-1.5 rounded-full bg-slate-300" />
@@ -70,7 +70,7 @@ export function HeroVisual() {
         </div>
       </div>
 
-      <div className="hv absolute bottom-2 left-8 w-[18rem]" style={{ ['--k' as string]: 20 }}>
+      <div className="hv absolute bottom-2 left-8 w-72" style={{ ['--k' as string]: 20 }}>
         <div className="float" style={{ ['--ft' as string]: '9s', ['--fd' as string]: '-4s' }}>
           <Glass tilt className="p-4">
             <svg viewBox="0 0 260 70" className="w-full" fill="none">
@@ -95,7 +95,7 @@ export function HeroVisual() {
       {[
         ['React', 'right-6 top-2', 5, 18],
         ['Node.js', 'right-2 bottom-24', 6.5, 30],
-        ['n8n', 'left-2 top-[15.5rem]', 5.5, 34],
+        ['n8n', 'left-2 top-62', 5.5, 34],
       ].map(([label, pos, ft, k]) => (
         <div key={label} className={`hv absolute ${pos}`} style={{ ['--k' as string]: k }}>
           <div className="float" style={{ ['--ft' as string]: `${ft}s` }}>

@@ -22,7 +22,7 @@ export function About() {
             <div className="grid items-start gap-8 md:grid-cols-[15rem_1fr] md:gap-12">
               {/* Photo in a glowing gradient frame */}
               <div className="mx-auto w-52 md:mx-0 md:w-full">
-                <div className="rounded-[28px] bg-gradient-to-br from-aqua via-iris to-rose p-[3px] shadow-[0_0_50px_rgb(129_140_248/0.45)]">
+                <div className="rounded-[28px] bg-linear-to-br from-aqua via-iris to-rose p-0.75 shadow-[0_0_50px_rgb(129_140_248/0.45)]">
                   <img
                     src="/profile.jpg"
                     alt={`Portrait of ${profile.name}`}
