@@ -1,6 +1,6 @@
 # Portfolio — project rules
 
-Frontend-only personal portfolio. No backend, no database.
+Frontend-only personal portfolio. No API, no database. `server.js` (Express) only serves the built `dist/` for self-hosting; see `DEPLOY.md`. Run with `npm run build && npm start` (PORT env, default 3000).
 
 ## Stack
 Vite 8 + React 19 + TypeScript · Tailwind CSS v4 (`@tailwindcss/vite`, tokens in `@theme` in `src/styles/globals.css`) · Motion (`motion/react`) for component/gesture animation · GSAP + ScrollTrigger (`@gsap/react` `useGSAP`) for scroll choreography · Lenis smooth scroll synced to GSAP ticker · three + @react-three/fiber + drei for the 3D toy scene · lucide-react icons · Fonts: Unbounded (display), Figtree (body) via Fontsource.
