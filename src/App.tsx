@@ -1,72 +1,36 @@
-import { lazy, Suspense, useState } from 'react'
-import { Backdrop } from './components/Backdrop'
-import { Cursor } from './components/Cursor'
-import { Marquee } from './components/Marquee'
-import { Nav } from './components/Nav'
-import { useReducedMotion } from './lib/media'
-import { useTrackSections } from './lib/scroll-store'
-import { SmoothScroll } from './lib/smooth-scroll'
+import { CursorGlow } from './components/CursorGlow'
+import { Header } from './components/Header'
 import { About } from './sections/About'
 import { Contact } from './sections/Contact'
 import { Experience } from './sections/Experience'
-import { Footer } from './sections/Footer'
-import { Hero } from './sections/Hero'
 import { Projects } from './sections/Projects'
 import { Skills } from './sections/Skills'
-import { StaticToys } from './three/StaticToys'
-
-const ToyScene = lazy(() => import('./three/ToyScene'))
-
-function hasWebGL() {
-  try {
-    return !!document.createElement('canvas').getContext('webgl2')
-  } catch {
-    return false
-  }
-}
-
-function ToyLayer() {
-  const reduced = useReducedMotion()
-  const [webgl] = useState(hasWebGL)
-  if (!webgl) return <StaticToys />
-  return (
-    <>
-      <Backdrop />
-      {reduced ? (
-        <StaticToys />
-      ) : (
-        <Suspense fallback={null}>
-          <ToyScene />
-        </Suspense>
-      )}
-    </>
-  )
-}
 
 export default function App() {
-  useTrackSections()
-
   return (
-    <SmoothScroll>
+    <>
       <a
         href="#main"
-        className="sr-only z-[200] rounded-full bg-lemon px-5 py-3 font-semibold text-plum focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        className="sr-only rounded-full bg-indigo-300 px-5 py-3 font-semibold text-slate-900 focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
       >
         Skip to content
       </a>
-      <Cursor />
-      <Nav />
-      <ToyLayer />
-      <main id="main" className="relative z-10">
-        <Hero />
-        <Marquee />
-        <About />
-        <Projects />
-        <Skills />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
-    </SmoothScroll>
+      <CursorGlow />
+      <div className="relative z-10 mx-auto min-h-screen max-w-screen-xl px-6 md:px-12 lg:px-24">
+        <div className="lg:flex lg:justify-between lg:gap-4">
+          <Header />
+          <main id="main" className="pt-24 lg:w-[50%] lg:py-24">
+            <About />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Contact />
+            <footer className="max-w-md pb-16 text-sm text-slate-500">
+              Designed and built by Pugalendhi S with React and Tailwind CSS.
+            </footer>
+          </main>
+        </div>
+      </div>
+    </>
   )
 }

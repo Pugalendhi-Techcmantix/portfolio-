@@ -1,28 +1,22 @@
 import { Check, Copy } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Confetti } from '../components/Confetti'
-import { MagneticButton } from '../components/MagneticButton'
 import { profile } from '../data/profile'
-import { useReducedMotion } from '../lib/media'
 
 type Status = 'idle' | 'copied' | 'failed'
 
 export function Contact() {
-  const reduced = useReducedMotion()
   const [status, setStatus] = useState<Status>('idle')
-  const [burst, setBurst] = useState(0)
 
   useEffect(() => {
     if (status === 'idle') return
-    const t = setTimeout(() => setStatus('idle'), 2600)
+    const t = setTimeout(() => setStatus('idle'), 2500)
     return () => clearTimeout(t)
-  }, [status, burst])
+  }, [status])
 
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(profile.email)
       setStatus('copied')
-      setBurst((b) => b + 1)
     } catch {
       setStatus('failed')
     }
@@ -30,65 +24,55 @@ export function Contact() {
 
   const message = {
     idle: '',
-    copied: 'Email copied to your clipboard.',
+    copied: 'Email address copied.',
     failed: `Couldn’t copy automatically. The address is ${profile.email}`,
   }[status]
 
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-title"
-      className="relative flex min-h-svh flex-col items-center justify-center px-5 py-28 text-center sm:px-8"
-    >
-      <div className="glass flex w-full max-w-4xl flex-col items-center rounded-[40px] px-5 py-12 sm:px-10 md:py-16">
-      <h2 id="contact-title" className="font-display text-[clamp(2.2rem,7vw,5.5rem)] font-black leading-[0.95] tracking-[-0.04em] text-white [filter:drop-shadow(0_0_30px_rgb(139_92_246/0.6))]">
-        Let’s build
-        <br />
-        something together.
+    <section id="contact" aria-labelledby="contact-title" className="mb-16 scroll-mt-16 lg:scroll-mt-24">
+      <h2 id="contact-title" className="sticky top-0 z-10 -mx-6 mb-6 bg-night/80 px-6 py-5 text-sm font-semibold text-slate-200 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
+        Contact
       </h2>
-      <p className="mt-6 max-w-[40ch] text-xl text-white/85">
-        Have a project, a role or an idea? Send me an email or call, and I’ll get back to you.
+      <p className="text-2xl font-semibold tracking-tight text-slate-100 sm:text-3xl">Let’s work together.</p>
+      <p className="mt-3 max-w-md">
+        I’m open to new projects and roles. The quickest way to reach me is by email or phone.
       </p>
 
-      <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
-        <span className="relative">
-          <MagneticButton onClick={copy} className="text-base md:text-lg" aria-label={`Copy email address ${profile.email}`}>
-            {status === 'copied' ? <Check size={20} strokeWidth={2.75} aria-hidden /> : <Copy size={18} strokeWidth={2.5} aria-hidden />}
-            {status === 'copied' ? 'Copied!' : profile.email}
-          </MagneticButton>
-          {burst > 0 && !reduced && <Confetti key={burst} seed={burst} />}
-        </span>
-        <MagneticButton href={`mailto:${profile.email}`} variant="secondary">
-          Send an email
-        </MagneticButton>
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <a
+          href={`mailto:${profile.email}`}
+          className="inline-flex min-h-11 items-center rounded-full bg-indigo-300 px-5 text-sm font-semibold text-slate-900 transition-colors hover:bg-indigo-200"
+        >
+          Email me
+        </a>
+        <button
+          type="button"
+          onClick={copy}
+          aria-label={`Copy email address ${profile.email}`}
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-700 px-5 text-sm font-medium text-slate-200 transition-colors hover:border-slate-500 hover:bg-white/5"
+        >
+          {status === 'copied' ? <Check size={16} aria-hidden /> : <Copy size={16} aria-hidden />}
+          {profile.email}
+        </button>
       </div>
-      <p role="status" aria-live="polite" className="mt-4 min-h-7 text-base font-semibold">
+      <p role="status" aria-live="polite" className="mt-3 min-h-6 text-sm text-slate-300">
         {message}
       </p>
 
-      <ul aria-label="Elsewhere" className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
-        <li>
-          <a
-            href={profile.phoneHref}
-            className="inline-flex min-h-11 items-center font-semibold underline decoration-2 underline-offset-4 hover:decoration-bubblegum"
-          >
-            {profile.phone}
-          </a>
-        </li>
-        {profile.socials.map((s) => (
-          <li key={s.label}>
-            <a
-              href={s.href}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-11 items-center font-semibold underline decoration-2 underline-offset-4 hover:decoration-bubblegum"
-            >
-              {s.label}
+      <dl className="mt-4 grid gap-1 text-sm">
+        <div className="flex gap-2">
+          <dt className="text-slate-500">Phone</dt>
+          <dd>
+            <a href={profile.phoneHref} className="text-slate-200 hover:text-indigo-200">
+              {profile.phone}
             </a>
-          </li>
-        ))}
-      </ul>
-      </div>
+          </dd>
+        </div>
+        <div className="flex gap-2">
+          <dt className="text-slate-500">Location</dt>
+          <dd className="text-slate-200">{profile.location}</dd>
+        </div>
+      </dl>
     </section>
   )
 }

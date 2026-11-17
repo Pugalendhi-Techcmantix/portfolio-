@@ -1,17 +1,17 @@
 # Portfolio — project rules
 
-Frontend-only personal portfolio. No API, no database. Production host: cPanel/Apache at pugal.techcmantix.in, deployed as static files (`npm run package` → upload `portfolio-site.zip`; `public/.htaccess` handles routing/caching). `server.js` (Express) is an alternative Node host. See `DEPLOY.md`.
+Personal portfolio for Pugalendhi S (web developer, Trichy). Frontend-only: no API, no database.
+Production host: cPanel/Apache at pugal.techcmantix.in, deployed as static files (`npm run package` → upload `portfolio-site.zip`; `public/.htaccess` handles routing/caching). `server.js` (Express) is an alternative Node host. See `DEPLOY.md`.
 
 ## Stack
-Vite 8 + React 19 + TypeScript · Tailwind CSS v4 (`@tailwindcss/vite`, tokens in `@theme` in `src/styles/globals.css`) · Motion (`motion/react`) for component/gesture animation · GSAP + ScrollTrigger (`@gsap/react` `useGSAP`) for scroll choreography · Lenis smooth scroll synced to GSAP ticker · three + @react-three/fiber + drei for the 3D toy scene · lucide-react icons · Fonts: Unbounded (display), Figtree (body) via Fontsource.
+Vite 8 + React 19 + TypeScript · Tailwind CSS v4 (`@tailwindcss/vite`, theme in `src/styles/globals.css`) · lucide-react icons · Inter variable font (Fontsource). No 3D, no animation libraries: the site must stay fast (about 75 KB gzip JS).
 
 ## Design
-Spec: `docs/superpowers/specs/2026-11-16-portfolio-design.md`. Use only the palette tokens (lilac, plum, bubblegum, lemon, pool, grass). Sentence case, no all-caps eyebrows, no "→" in buttons.
-Look: dark "arcade" theme (dark only): React Bits Galaxy background (src/components/reactbits), R3F planet + neon toys, glass panels (.glass / .glass-lite in globals.css). Third-party skills installed in .claude/skills: apple-design, glassmorphism, threejs-*.
+Professional, content-first, dark. Two-column layout on desktop (fixed left column with name, nav and links; scrolling right column), single column on mobile. One accent colour (indigo), slate greys, subtle cursor glow. Sentence case, no all-caps labels, no gimmicks (no 3D scenes, custom cursors, pinned scroll or heavy blur).
 
 ## Rules
-- All content lives in `src/data/*.ts` — never hardcode copy in components.
-- Every animation must respect `prefers-reduced-motion` (use `useReducedMotion` from `src/lib`).
-- 3D canvas is lazy-loaded, DPR ≤ 1.5, static fallback for reduced motion.
-- Visible keyboard focus on all interactive elements; semantic landmarks.
+- All content lives in `src/data/*.ts`; never hardcode copy in components.
+- Respect `prefers-reduced-motion`.
+- Visible keyboard focus on all interactive elements; semantic landmarks; no horizontal scroll.
+- Never invent achievements, numbers or links. Ask the user for real details.
 - Verify with `npm run build` and Playwright screenshots at 375 / 768 / 1440px.

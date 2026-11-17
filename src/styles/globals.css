@@ -1,67 +1,25 @@
 @import 'tailwindcss';
-@import '@fontsource-variable/unbounded';
-@import '@fontsource-variable/figtree';
+@import '@fontsource-variable/inter';
 
 @theme {
-  --color-void: #05030d;
-  --color-lilac: #d9d2ff;
-  --color-plum: #22103d;
-  --color-violet: #8b5cf6;
-  --color-bubblegum: #ff4fa3;
-  --color-lemon: #ffe04a;
-  --color-pool: #1fb6ff;
-  --color-grass: #34d07f;
-
-  --font-display: 'Unbounded Variable', system-ui, sans-serif;
-  --font-sans: 'Figtree Variable', system-ui, sans-serif;
-
-  --ease-toy: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-glass: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@theme inline {
-  --color-ink: var(--fg);
-  --color-paper: var(--bg);
-}
-
-/* Dark "arcade" theme: the whole site is dark so glass and neon have something to glow against. */
-:root {
-  --bg: #05030d;
-  --fg: #eee9ff;
-  --muted: #b9b0d9;
-  color-scheme: dark;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-stopped {
-  overflow: clip;
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --color-night: #0a0f1f;
+  --color-accent: #a5b4fc;
 }
 
 html {
-  /* keep focused elements clear of the fixed nav */
-  scroll-padding-top: 6rem;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background:
-    radial-gradient(60% 50% at 82% 8%, rgb(139 92 246 / 0.28), transparent 70%),
-    radial-gradient(50% 45% at 8% 55%, rgb(255 79 163 / 0.16), transparent 70%),
-    radial-gradient(65% 50% at 70% 100%, rgb(31 182 255 / 0.2), transparent 70%),
-    var(--bg);
-  background-attachment: fixed;
-  color: var(--fg);
+  background: var(--color-night);
+  color: #94a3b8; /* slate-400 */
   font-family: var(--font-sans);
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip;
 }
 
 h1,
@@ -71,115 +29,37 @@ h3 {
 }
 
 ::selection {
-  background: var(--color-bubblegum);
-  color: var(--color-void);
+  background: rgb(165 180 252 / 0.35);
+  color: #fff;
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-pool);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 
-a,
-button {
-  touch-action: manipulation;
-}
-
-/* ---------- Glass ----------
-   Frost + translucency + lit edge + depth. Needs a busy backdrop (the galaxy) to read as glass. */
-.glass {
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.14), rgb(255 255 255 / 0.04));
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgb(255 255 255 / 0.18);
-  box-shadow:
-    0 10px 40px rgb(0 0 0 / 0.45),
-    inset 0 1px 0 rgb(255 255 255 / 0.32),
-    inset 0 -1px 0 rgb(0 0 0 / 0.25);
-  transition:
-    background 0.4s var(--ease-glass),
-    box-shadow 0.4s var(--ease-glass),
-    transform 0.4s var(--ease-glass),
-    border-color 0.4s var(--ease-glass);
-}
-.glass:hover {
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.2), rgb(255 255 255 / 0.07));
-  border-color: rgb(255 255 255 / 0.3);
-}
-/* Same look without the live blur, for things that move a lot (pinned panels, long lists). */
-.glass-lite {
-  background: linear-gradient(135deg, rgb(40 26 78 / 0.72), rgb(16 9 36 / 0.78));
-  border: 1px solid rgb(255 255 255 / 0.16);
-  box-shadow:
-    0 10px 40px rgb(0 0 0 / 0.5),
-    inset 0 1px 0 rgb(255 255 255 / 0.25),
-    inset 0 -1px 0 rgb(0 0 0 / 0.3);
-}
-@media (prefers-reduced-transparency: reduce) {
-  .glass {
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: rgb(26 16 52 / 0.94);
-  }
-}
-
-.neon-text {
-  background: linear-gradient(95deg, var(--color-pool), var(--color-violet) 45%, var(--color-bubblegum));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* ---------- Arcade perspective grid ---------- */
-.grid-floor {
-  position: absolute;
-  inset-inline: -25%;
-  bottom: 0;
-  height: 60%;
-  overflow: hidden;
-  perspective: 520px;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to top, #000 8%, transparent 92%);
-  mask-image: linear-gradient(to top, #000 8%, transparent 92%);
-}
-.grid-floor::before {
-  content: '';
-  position: absolute;
+/* A soft light that follows the cursor. Only the CSS variables change, so it stays cheap. */
+.cursor-glow {
+  position: fixed;
   inset: 0;
-  transform: rotateX(64deg);
-  transform-origin: 50% 100%;
-  background-image:
-    linear-gradient(rgb(139 92 246 / 0.7) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(31 182 255 / 0.55) 1px, transparent 1px);
-  background-size: 72px 72px;
-  animation: grid-move 3.2s linear infinite;
-}
-@keyframes grid-move {
-  to {
-    background-position: 0 72px;
-  }
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  animation: marquee 40s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    560px circle at var(--mx, 70%) var(--my, 20%),
+    rgb(99 102 241 / 0.13),
+    transparent 75%
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track,
-  .grid-floor::before {
-    animation: none;
+  html {
+    scroll-behavior: auto;
   }
-}
-
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  html.has-toy-cursor,
-  html.has-toy-cursor * {
-    cursor: none !important;
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }

@@ -1,87 +1,67 @@
-import clsx from 'clsx'
-import { AnimatePresence, LayoutGroup } from 'motion/react'
-import { useRef, useState } from 'react'
-import { createPortal } from 'react-dom'
-import { ProjectModal } from '../components/ProjectModal'
-import { ProjectPanel } from '../components/ProjectPanel'
-import { projects, type Project } from '../data/projects'
-import { gsap, useGSAP } from '../lib/gsap'
-import { useMediaQuery, useReducedMotion } from '../lib/media'
+import { ListChecks, MessageSquare, ShieldCheck, Workflow, type LucideIcon } from 'lucide-react'
+import { Tag } from '../components/Tag'
+import { profile } from '../data/profile'
+import { projects, type ProjectIcon } from '../data/projects'
+
+const icons: Record<ProjectIcon, LucideIcon> = {
+  chat: MessageSquare,
+  flow: Workflow,
+  tasks: ListChecks,
+  auth: ShieldCheck,
+}
 
 export function Projects() {
-  const reduced = useReducedMotion()
-  const desktop = useMediaQuery('(min-width: 768px)')
-  const pinned = desktop && !reduced
-  const section = useRef<HTMLElement>(null)
-  const track = useRef<HTMLDivElement>(null)
-  const trigger = useRef<HTMLButtonElement | null>(null)
-  const [open, setOpen] = useState<Project | null>(null)
-
-  useGSAP(
-    () => {
-      if (!pinned || !track.current) return
-      const distance = () => track.current!.scrollWidth - window.innerWidth
-      gsap.to(track.current, {
-        x: () => -distance(),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section.current,
-          start: 'top top',
-          end: () => `+=${distance()}`,
-          pin: true,
-          scrub: 0.8,
-          invalidateOnRefresh: true,
-        },
-      })
-    },
-    { scope: section, dependencies: [pinned], revertOnUpdate: true },
-  )
-
-  const openProject = (p: Project, el: HTMLButtonElement) => {
-    trigger.current = el
-    setOpen(p)
-  }
-  const close = () => {
-    setOpen(null)
-    requestAnimationFrame(() => trigger.current?.focus({ preventScroll: true }))
-  }
-
   return (
-    <section
-      id="projects"
-      ref={section}
-      aria-labelledby="projects-title"
-      className={clsx('relative', pinned ? 'h-svh overflow-hidden' : 'py-24')}
-    >
-      <LayoutGroup>
-        <div
-          ref={track}
-          className={clsx(
-            'flex gap-8 px-5 sm:px-8 md:px-14',
-            pinned ? 'h-full w-max flex-row items-center gap-12 pr-[12vw] pt-16' : 'flex-col',
-          )}
-        >
-          <header className={clsx('shrink-0', pinned && 'w-[min(26rem,30vw)]')}>
-            <h2
-              id="projects-title"
-              className="font-display text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold leading-[0.95] tracking-[-0.03em]"
-            >
-              Selected work
-            </h2>
-            <p className="mt-5 max-w-[36ch] text-lg">
-              Projects from work and from my own practice. Open any card to see what it does.
-            </p>
-          </header>
-          {projects.map((p, i) => (
-            <ProjectPanel key={p.id} project={p} index={i} wide={pinned} onOpen={openProject} />
-          ))}
-        </div>
-
-        {createPortal(
-          <AnimatePresence>{open && <ProjectModal key={open.id} project={open} onClose={close} />}</AnimatePresence>,
-          document.body,
-        )}
-      </LayoutGroup>
+    <section id="projects" aria-labelledby="projects-title" className="mb-24 scroll-mt-16 md:mb-32 lg:scroll-mt-24">
+      <h2 id="projects-title" className="sticky top-0 z-10 -mx-6 mb-4 bg-night/80 px-6 py-5 text-sm font-semibold text-slate-200 backdrop-blur md:-mx-12 md:px-12 lg:sr-only">
+        Projects
+      </h2>
+      <ul className="group/list">
+        {projects.map((p) => {
+          const Icon = icons[p.icon]
+          return (
+            <li key={p.id} className="mb-10">
+              <div className="group relative grid gap-4 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-xl transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:ring-1 lg:group-hover:ring-white/5" />
+                <div className="z-10 sm:col-span-2">
+                  <div className="grid size-12 place-items-center rounded-xl bg-indigo-400/10 text-indigo-200 ring-1 ring-inset ring-indigo-300/15">
+                    <Icon className="size-6" strokeWidth={1.6} aria-hidden />
+                  </div>
+                </div>
+                <div className="z-10 sm:col-span-6">
+                  <h3 className="font-medium leading-snug text-slate-200">{p.title}</h3>
+                  <p className="text-xs font-medium text-slate-500">{p.status}</p>
+                  <p className="mt-2 text-sm leading-normal">{p.summary}</p>
+                  <ul className="mt-2 grid gap-1 text-sm leading-normal">
+                    {p.highlights.map((h) => (
+                      <li key={h} className="flex gap-2">
+                        <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-slate-500" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                  <ul aria-label="Technologies used" className="mt-3 flex flex-wrap gap-2">
+                    {p.tags.map((t) => (
+                      <Tag key={t}>{t}</Tag>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </li>
+          )
+        })}
+      </ul>
+      <a
+        href={profile.github}
+        target="_blank"
+        rel="noreferrer"
+        className="group inline-flex items-center font-medium text-slate-200 hover:text-indigo-200 focus-visible:text-indigo-200"
+      >
+        <span className="border-b border-transparent pb-px transition group-hover:border-indigo-200">See more on GitHub</span>
+        <span aria-hidden className="ml-1 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-1">
+          ↗
+        </span>
+      </a>
     </section>
   )
 }
