@@ -402,6 +402,35 @@ h3 {
   }
 }
 
+/* Skip layout and paint for sections that are far off-screen. Sizes are close to the real heights
+   (measured per breakpoint) so the scrollbar does not jump; "auto" remembers the real size after first render. */
+main > section:not(#top) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--ci, 900px);
+}
+#about { --ci: 1690px; }
+#experience { --ci: 1400px; }
+#projects { --ci: 3680px; }
+#skills { --ci: 1460px; }
+#education { --ci: 1360px; }
+#contact { --ci: 780px; }
+@media (min-width: 768px) {
+  #about { --ci: 1260px; }
+  #experience { --ci: 1060px; }
+  #projects { --ci: 2310px; }
+  #skills { --ci: 1150px; }
+  #education { --ci: 1190px; }
+  #contact { --ci: 730px; }
+}
+@media (min-width: 1024px) {
+  #about { --ci: 850px; }
+  #experience { --ci: 1030px; }
+  #projects { --ci: 1580px; }
+  #skills { --ci: 1080px; }
+  #education { --ci: 800px; }
+  #contact { --ci: 780px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

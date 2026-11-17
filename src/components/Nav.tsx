@@ -21,7 +21,7 @@ export function Nav() {
       <nav aria-label="Main" className="glass flex items-center gap-1 p-1.5" style={{ ['--r' as string]: '9999px' }}>
         <a
           href="#top"
-          aria-label={`${profile.name}, back to top`}
+          aria-label={`PS: ${profile.name}, back to top`}
           className="grid size-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-iris to-rose text-sm font-bold text-white shadow-[0_0_22px_rgb(129_140_248/0.55)] transition-transform duration-300 hover:scale-105"
         >
           PS

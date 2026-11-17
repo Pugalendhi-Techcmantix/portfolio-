@@ -35,7 +35,8 @@ export function Hero() {
             ))}
           </h1>
 
-          <p className="rise mt-5 text-2xl font-semibold text-slate-100 sm:text-3xl" style={{ ['--i' as string]: 5 }} aria-label={`I build ${profile.words.join(', ')}`}>
+          <p className="rise mt-5 text-2xl font-semibold text-slate-100 sm:text-3xl" style={{ ['--i' as string]: 5 }}>
+            <span className="sr-only">I build {profile.words.join(', ')}</span>
             <span aria-hidden>
               I build{' '}
               <span className="words !grid sm:!inline-grid">
