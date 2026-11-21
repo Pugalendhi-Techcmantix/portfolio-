@@ -1,0 +1,4 @@
+window.APP_CONFIG = {
+  API_URL: "${API_URL}",
+  APP_NAME: "${APP_NAME}"
+};
