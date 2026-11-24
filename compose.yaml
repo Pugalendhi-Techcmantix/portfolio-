@@ -1,0 +1,15 @@
+services:
+  frontend:
+    build: .
+    ports:
+      - "8082:80"
+    environment:
+      API_URL: /api
+      APP_NAME: MYProfile
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    expose:
+      - "3000"
